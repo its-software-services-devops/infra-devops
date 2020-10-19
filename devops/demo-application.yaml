@@ -1,0 +1,60 @@
+application:
+  type: "html"
+
+deploy:
+  type: "App" #Infra
+  deploymentName: demo-application
+  fromDockerHost: "docker.io"
+  fromDockerRepo: "its-services/demo-application"
+  helmRepo: "https://github.com/its-services/helm-something"
+  helmChartKB8: "cloud-run-app"
+
+  platforms:
+    - type: NonProd
+      platform: CloudRun
+      tokenKeyID: SecretIdNonProd
+
+    - type: Prod
+      platform: CloudRun
+      tokenKeyID: SecretIdProd
+
+  environments:
+    - env: Development
+      appNameSuffix: ""
+      defaultTag: "develop-latest"
+      platform: CloudRun
+      type: NonProd
+      vaultKey: Dev
+
+      deployParams:
+        project: ITS-DEVOPS
+        region: asia-southeast1-b
+        helmChartVersion: '2.0.16'
+        params:
+          - name: env.DUMMY
+            value: 5
+          - name: image.repository
+            value: ${DOCKER_IMAGE_NAME}
+          - name: image.tag
+            value: ${DOCKER_IMAGE_TAG}            
+      instance: Dev
+
+    - env: Production
+      appNameSuffix: ""
+      defaultTag: "master-latest"
+      platform: CloudRun
+      type: Prod
+      vaultKey: Prod
+
+      deployParams:        
+        project: ITS-DEVOPS
+        region: asia-southeast1-b
+        helmChartVersion: '2.0.16'
+        params:
+          - name: env.DUMMY
+            value: 5
+          - name: image.repository
+            value: ${DOCKER_IMAGE_NAME}
+          - name: image.tag
+            value: ${DOCKER_IMAGE_TAG}            
+      instance: Prod
