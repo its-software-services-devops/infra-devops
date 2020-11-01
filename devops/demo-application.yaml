@@ -6,7 +6,7 @@ deploy:
   fromDockerHost: "gcr.io"
   fromDockerRepo: "/cloudrun/hello"
   helmRepo: "https://raw.githubusercontent.com/its-software-services-devops/helm-cloudrun-app/main/"
-  helmChartKB8: "helm-cloudrun-app"
+  helmChartName: "helm-cloudrun-app"
 
   environments:
     - env: Development
@@ -15,19 +15,18 @@ deploy:
       defaultTag: latest
       platform: CloudRun
       vaultKey: Dev
-      deployPolicy: Always #Match
+      deployPolicy: Always #MatchInstance
       project: its-artifact-commons
-      region: asia-southeast1-b
+      region: asia-southeast1
       helmChartVersion: 1.1.0
       allowUnauthenHttp: true
       #tokenKeyID: SecretIdNonProd
 
       deployParams:
         - --set serviceName='webapp-demo'
-        - --set containers[0].image='${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}'
-        - --set containers[0].env[0].name='PORT'
-        - --set containers[0].env[0].value='8080'
-        - --set containers[0].ports[0].containerPort='8080'
+        #- --set containers[0].image='{{DOCKER_IMAGE_NAME}}:{{DOCKER_IMAGE_TAG}}'
+        - --set containers[0].image='gcr.io/cloudrun/hello:latest'
+        - --set-string containers[0].ports[0].containerPort='8080'
         - --set containers[0].resources.limits.cpu='1000m'
         - --set containers[0].resources.limits.memory='400Mi'
 
@@ -39,7 +38,7 @@ deploy:
       vaultKey: Prod
       deployPolicy: Always #Match
       project: its-artifact-commons
-      region: asia-southeast1-b
+      region: asia-southeast1
       helmChartVersion: 1.1.0
       allowUnauthenHttp: true
       #tokenKeyID: SecretIdProd
