@@ -17,7 +17,7 @@ deploy:
       vaultKey: Dev
       deployPolicy: Always #MatchInstance
       project: its-artifact-commons
-      region: asia-southeast1-b
+      region: asia-southeast1
       helmChartVersion: 1.1.0
       allowUnauthenHttp: true
       #tokenKeyID: SecretIdNonProd
