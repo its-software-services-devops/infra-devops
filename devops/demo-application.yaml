@@ -26,8 +26,6 @@ deploy:
         - --set serviceName='webapp-demo'
         #- --set containers[0].image='{{DOCKER_IMAGE_NAME}}:{{DOCKER_IMAGE_TAG}}'
         - --set containers[0].image='gcr.io/cloudrun/hello:latest'
-        - --set containers[0].env[0].name='PORT'
-        - --set-string containers[0].env[0].value='8080'
         - --set-string containers[0].ports[0].containerPort='8080'
         - --set containers[0].resources.limits.cpu='1000m'
         - --set containers[0].resources.limits.memory='400Mi'
