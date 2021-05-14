@@ -8,7 +8,7 @@ resource "google_compute_firewall" "k8s-nodes-allow-only-manager" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "443", "6443"]
+    ports    = ["22", "443", "6443", "10250", "10255"]
   }
 
   source_tags = ["k8s-manager"]
