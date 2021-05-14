@@ -15,7 +15,7 @@ copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
     
-  - from: terraform/*.tf
+  - from: terraforms/*.tf
     toDir: ""
 
 infraIasc:
