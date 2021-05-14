@@ -27,11 +27,11 @@ gceRke:
       mode: "register"
       role: '["worker"]'
 
-    - host: "its-rancher-worker-02"
-      profile: "worker"
-      zone: "asia-southeast1-b"
-      mode: "unregister"
-      role: '["worker"]'
+#    - host: "its-rancher-worker-02"
+#      profile: "worker"
+#      zone: "asia-southeast1-b"
+#      mode: "unregister"
+#      role: '["worker"]'
 
   profiles:
     master:
