@@ -12,6 +12,9 @@ copy:
   - from: scripts/*.bash
     toDir: scripts
 
+  - from: addons/*.yaml
+    toDir: addons
+
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 

@@ -1,4 +1,5 @@
-addons_include: []
+addons_include:
+  - ./addons/sc.yaml
 
 services:
   kube-api:
