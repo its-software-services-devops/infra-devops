@@ -15,6 +15,9 @@ copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
     
+  - from: terraform/*.tf
+    toDir: ""
+
 infraIasc:
   - valuesFiles: [iasc-its-global.yaml, iasc-its-gce-manager.yaml]
     transformer: yaml2tf
