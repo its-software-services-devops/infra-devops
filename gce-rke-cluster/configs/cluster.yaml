@@ -1,6 +1,9 @@
 addons_include:
   - ./addons/sc.yaml
 
+cloud_provider:
+    name: gce
+
 services:
   kube-api:
     service_cluster_ip_range: 192.168.200.0/21
