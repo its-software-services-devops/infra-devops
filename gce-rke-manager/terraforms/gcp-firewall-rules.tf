@@ -50,3 +50,17 @@ resource "google_compute_firewall" "k8s-nodes-deny-public" {
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["k8s-master", "k8s-worker"]
 }
+
+resource "google_compute_firewall" "k8s-nodes-lb-connect" {
+  name    = "k8s-nodes-lb-connect"
+  network = "default"
+  priority = 1003
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443", "6443", "80"]
+  }
+
+  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
+  target_tags = ["k8s-worker"]
+}
