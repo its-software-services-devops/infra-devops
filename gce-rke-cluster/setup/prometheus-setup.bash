@@ -1,14 +1,5 @@
 #!/bin/bash
 
-CFG=kubeconfig
-terraform output its-rancher-demo-kube_config_yaml > ${CFG}.out
-
-LINECOUNT=$(cat ${CFG}.out | wc -l)
-let "TOLINE=${LINECOUNT}-1"
-sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
-
-export KUBECONFIG=$(pwd)/${CFG}
-
 VERSION=release-0.8
 GIT_URL=https://github.com/prometheus-operator/kube-prometheus.git
 REPO_PATH=wip
