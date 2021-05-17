@@ -33,6 +33,12 @@ gceRke:
       mode: "register"
       role: '["worker"]'
 
+    - host: "its-rancher-worker-03"
+      profile: "worker"
+      zone: "asia-southeast1-b"
+      mode: "register"
+      role: '["worker"]'
+
   profiles:
     master:
       terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.9"
