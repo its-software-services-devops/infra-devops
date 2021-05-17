@@ -11,3 +11,4 @@ export KUBECONFIG=$(pwd)/${CFG}
 
 ./prometheus-setup.bash
 ./argocd-setup.bash
+./eck-setup.bash
