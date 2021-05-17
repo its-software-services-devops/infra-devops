@@ -3,6 +3,9 @@ addons_include:
 
 cloud_provider:
     name: gce
+    customCloudProvider: |-
+      [Global]
+      node-tags = k8s-worker
 
 services:
   kube-api:
