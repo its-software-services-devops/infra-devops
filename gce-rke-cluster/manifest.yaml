@@ -16,7 +16,7 @@ copy:
     toDir: addons
 
   - from: setup/*.bash
-    toDir: setup
+    toDir: ""
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
