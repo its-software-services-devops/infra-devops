@@ -27,7 +27,7 @@ resource "google_compute_firewall" "k8s-nodes-internode-connect" {
 
   allow {
     protocol = "tcp"
-    ports    = ["443", "6443", "10250", "10255"]
+    ports    = ["443", "6443", "10250", "10255", "2379", "2380"]
   }
 
   source_tags = ["k8s-master", "k8s-worker"]
