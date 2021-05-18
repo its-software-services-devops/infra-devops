@@ -42,7 +42,7 @@ gceRke:
   profiles:
     master:
       terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.9"
-      bootDiskImage: "projects/centos-cloud/global/images/centos-7-v20200910" #"projects/cos-cloud/global/images/cos-77-12371-1109-0" 
+      bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-small"    
       localPublicKeyFile: "id_rsa.pub"
@@ -60,7 +60,7 @@ gceRke:
 
     worker:
       terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.9"
-      bootDiskImage: "projects/centos-cloud/global/images/centos-7-v20200910" #"projects/cos-cloud/global/images/cos-77-12371-1109-0" 
+      bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-small"    
       localPublicKeyFile: "id_rsa.pub"
