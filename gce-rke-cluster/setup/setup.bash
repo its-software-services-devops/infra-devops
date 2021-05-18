@@ -9,5 +9,5 @@ sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
 
 export KUBECONFIG=$(pwd)/${CFG}
 
-./prometheus-setup.bash
-./eck-setup.bash
+./setup-prometheus.bash
+./setup-eck.bash
