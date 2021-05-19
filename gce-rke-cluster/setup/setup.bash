@@ -10,5 +10,5 @@ sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
 export KUBECONFIG=$(pwd)/${CFG}
 
 ./setup-prometheus.bash
-#./setup-nginx-svc.bash
+./setup-nginx-svc.bash
 #./setup-eck.bash
