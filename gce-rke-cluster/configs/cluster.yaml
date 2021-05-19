@@ -6,6 +6,14 @@ cloud_provider:
     customCloudProvider: |-
       [Global]
       node-tags = k8s-worker
+      
+ingress:
+  provider: nginx
+  options:
+    map-hash-bucket-size: "128"
+    ssl-protocols: SSLv2
+  extra_args:
+    enable-ssl-passthrough: ""
 
 services:
   kube-api:
