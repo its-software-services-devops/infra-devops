@@ -24,13 +24,13 @@ gceRke:
     - host: "its-rancher-master-02"
       profile: "master"
       zone: "asia-southeast1-a"
-      mode: "register" # register, unregister, remove
+      mode: "unregister" # register, unregister, remove
       role: '["controlplane", "etcd"]'
 
     - host: "its-rancher-master-03"
       profile: "master"
       zone: "asia-southeast1-a"
-      mode: "register" # register, unregister, remove
+      mode: "unregister" # register, unregister, remove
       role: '["controlplane", "etcd"]'
 
     - host: "its-rancher-worker-01"
