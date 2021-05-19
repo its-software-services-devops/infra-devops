@@ -15,4 +15,24 @@ spec:
   - name: https
     protocol: TCP
     port: 443
-    targetPort: 443    
+    targetPort: 443
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: default-backend
+  namespace: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  rules:
+    - host: nginx-backend.rke-demo.its-software-services.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: default-http-backend
+                port:
+                  number: 80
