@@ -9,7 +9,7 @@ resource "google_compute_firewall" "k8s-manager-to-cluster" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "443", "6443"]
+    ports    = ["22", "443", "6443", "30000-60000"]
   }
 
   source_tags = ["k8s-manager"]
