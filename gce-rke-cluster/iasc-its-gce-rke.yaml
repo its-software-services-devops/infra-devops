@@ -35,7 +35,7 @@ gceRke:
 
   profiles:
     master:
-      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.10"
+      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.11"
       bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-small"    
@@ -53,7 +53,7 @@ gceRke:
       remoteExecByNatIP: false
 
     worker:
-      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.10"
+      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.11"
       bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-small"    
