@@ -17,4 +17,3 @@ kubectl apply -f manifests/
 
 kubectl patch daemonset node-exporter -n monitoring -p '{"spec":{"template": {"spec": {"hostNetwork": false}}}}'
 
-kubectl apply -f setup/prometheus-ing.yaml
