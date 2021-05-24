@@ -23,7 +23,7 @@ gceRke:
 
     - host: "its-rancher-worker-01"
       profile: "worker"
-      zone: "asia-southeast1-b"
+      zone: "asia-southeast1-a"
       mode: "register"
       role: '["worker"]'
 
