@@ -14,3 +14,5 @@ cd kube-prometheus
 kubectl apply -f manifests/setup
 until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
 kubectl apply -f manifests/
+
+kubectl patch daemonset node-exporter -n monitoring -p '{"spec":{"template": {"spec": {"hostNetwork": false}}}}'
