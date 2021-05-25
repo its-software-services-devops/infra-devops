@@ -6,7 +6,7 @@ cloud_provider:
     customCloudProvider: |-
       [Global]
       node-tags = k8s-worker
-      node-instance-prefix = its-rancher-workers-group
+      node-instance-prefix = notused-for-now
       multizone = true
       
 ingress:
