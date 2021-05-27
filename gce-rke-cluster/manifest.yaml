@@ -39,3 +39,4 @@ infraIasc:
   - valuesFiles: [cert-manager.yaml]
     alias: cert-mngr
     chartId: cert-manager
+    namespace: cert-manager
