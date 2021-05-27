@@ -37,6 +37,6 @@ infraIasc:
     alias: gcp
 
   - valuesFiles: [cert-manager.yaml]
-    alias: cert-mngr
+    alias: cert-manager-normalized
     chartId: cert-manager
     namespace: cert-manager
