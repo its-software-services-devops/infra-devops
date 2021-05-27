@@ -11,3 +11,4 @@ export KUBECONFIG=$(pwd)/${CFG}
 
 ./setup-prometheus.bash
 ./setup-service-ingress.bash
+./setup-cert-manager.bash
