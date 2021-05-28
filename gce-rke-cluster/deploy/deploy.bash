@@ -9,5 +9,6 @@ sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
 
 export KUBECONFIG=$(pwd)/${CFG}
 
+# Certificates deployment should be at the very last step
 ./deploy-certificates.bash
 ./deploy-service-ingress.bash

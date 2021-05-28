@@ -14,6 +14,8 @@ issuers:
   - name: lets-encrypt-issuer
     email: pjame.fb@gmail.com
 
+# Be careful about the race condition when create multiple certificates nearly the same time
+# This usually happen when use DNS challenging protocol
 certificates:
   - name: default
     isWildcard: true
@@ -21,6 +23,6 @@ certificates:
     issuerRef: lets-encrypt-issuer
 
   - name: prometheus-k8s
-    secretName: prometheus-k8s-tls
+    secretName: prometheus-k8s-cert
     issuerRef: lets-encrypt-issuer
     namespace: monitoring
