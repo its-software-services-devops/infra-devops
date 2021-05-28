@@ -19,3 +19,8 @@ certificates:
     isWildcard: true
     secretName: ingress-default-cert
     issuerRef: lets-encrypt-issuer
+
+  - name: prometheus-k8s
+    secretName: prometheus-k8s-tls
+    issuerRef: lets-encrypt-issuer
+    namespace: monitoring

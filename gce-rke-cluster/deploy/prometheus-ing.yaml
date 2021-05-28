@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
       - prometheus-k8s.gcp-rke-demo.its-software-services.com
-      #secretName: tls-secret
+      secretName: prometheus-k8s-tls
   rules:
     - host: prometheus-k8s.gcp-rke-demo.its-software-services.com
       http:
