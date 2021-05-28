@@ -36,7 +36,7 @@ copy:
     toDir: configs
     
 infraIasc:
-  - valuesFiles: [iasc-its-global.yaml, iasc-its-gce-rke.yaml]
+  - valuesFiles: [terraform/iasc-its-global.yaml, terraform/iasc-its-gce-rke.yaml]
     transformer: yaml2tf
     alias: gcp
 
