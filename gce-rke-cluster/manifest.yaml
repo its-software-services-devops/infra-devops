@@ -17,12 +17,6 @@ charts:
     version: 1.1.1
 
 copy:
-  - from: terraform/scripts/*.bash
-    toDir: scripts
-
-  - from: addons/*.yaml
-    toDir: addons
-
   - from: setup/*.bash
     toDir: ""
 
@@ -35,8 +29,14 @@ copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 
-  - from: configs/*.yaml
+  - from: gs://its-config-params/gcp-rke-demo-cluster/*.json
+    toDir: ""
+
+  - from: terraform/configs/*.yaml
     toDir: configs
+
+  - from: terraform/scripts/*.bash
+    toDir: scripts
     
 infraIasc:
   - valuesFiles: [terraform/iasc-its-global.yaml, terraform/iasc-its-gce-rke.yaml]
