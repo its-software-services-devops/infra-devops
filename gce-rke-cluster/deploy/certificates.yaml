@@ -15,7 +15,7 @@ issuers:
     email: pjame.fb@gmail.com
 
 certificates:
-  - name: default-certs
+  - name: default
     isWildcard: true
     secretName: ingress-default-cert
     issuerRef: lets-encrypt-issuer
