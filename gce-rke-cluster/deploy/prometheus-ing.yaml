@@ -7,8 +7,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
+  tls:
+    - hosts:
+      - prometheus-k8s.gcp-rke-demo.its-software-services.com
+      #secretName: tls-secret
   rules:
-    - host: prometheus-k8s.rke-demo.its-software-services.com
+    - host: prometheus-k8s.gcp-rke-demo.its-software-services.com
       http:
         paths:
           - path: /
