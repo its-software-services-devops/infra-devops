@@ -26,6 +26,9 @@ copy:
   - from: deploy/*.bash
     toDir: ""
 
+  - from: deploy/*.yaml
+    toDir: deploy
+
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 

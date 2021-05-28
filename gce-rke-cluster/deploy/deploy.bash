@@ -10,3 +10,4 @@ sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
 export KUBECONFIG=$(pwd)/${CFG}
 
 ./deploy-certificates.bash
+./deploy-service-ingress.bash
