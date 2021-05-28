@@ -20,7 +20,8 @@ certificates:
   - name: default
     isWildcard: true
     secretName: ingress-default-cert
-    issuerRef: lets-encrypt-issuer
+    #issuerRef: lets-encrypt-issuer #Self-signed
+    namespace: ingress-nginx
 
   - name: prometheus-k8s
     secretName: prometheus-k8s-cert
