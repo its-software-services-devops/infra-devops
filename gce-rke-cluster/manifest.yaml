@@ -58,6 +58,8 @@ infraIasc:
   - valuesFiles: [deploy/certificates.yaml]
     alias: cluster-certs
     chartId: helm-cluster-certificates
+    values:
+      - --set-string global.letsEncryptEnv=test
 
   - valuesFiles: [deploy/prometheus-alert-config.yaml]
     alias: prometheus-config
