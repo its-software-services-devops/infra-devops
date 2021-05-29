@@ -13,7 +13,7 @@ ingress:
   provider: nginx
   options:
     map-hash-bucket-size: "128"
-    ssl-protocols: SSLv2
+    ssl-protocols: SSLv2 SSLv3 TLSv1.1 TLSv1.2
   extra_args:
     enable-ssl-passthrough: ""
     default-ssl-certificate: "ingress-nginx/ingress-default-cert"
