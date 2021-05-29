@@ -8,8 +8,8 @@ alertmanager:
         slackUrl: ''
         channel: '#rke-demo'
         discardRules:
-          #- alertname: 'CPUThrottlingHigh'
-          #  namespace: 'monitoring'            
+          - alertname: 'CPUThrottlingHigh'
+            namespace: 'monitoring'            
           - alertname: 'KubeControllerManagerDown|KubeSchedulerDown'
 
 prometheus: {}
