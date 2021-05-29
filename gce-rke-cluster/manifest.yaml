@@ -16,6 +16,10 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-cluster-certificates/
     version: 1.1.2
 
+  helm-prometheus-k8s:
+    chartUrl: https://its-software-services-devops.github.io/helm-prometheus-k8s/
+    version: 1.2.0
+
 copy:
   - from: setup/*.bash
     toDir: ""
@@ -54,3 +58,9 @@ infraIasc:
   - valuesFiles: [deploy/certificates.yaml]
     alias: cluster-certs
     chartId: helm-cluster-certificates
+
+  - valuesFiles: [deploy/prometheus-alert-config.yaml]
+    alias: prometheus-config
+    chartId: helm-prometheus-k8s
+    values:
+      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.RKE_DEMO_SLACK_URL}

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kubectl apply -f deploy/prometheus-alert-config.yaml
+kubectl apply -f prometheus-config.yaml
