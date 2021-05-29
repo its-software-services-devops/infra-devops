@@ -5,7 +5,7 @@ alertmanager:
     createSecret: true
     config:
       alertNoti:
-        slackUrl: 'https://hooks.slack.com/services/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'
+        slackUrl: ''
         channel: '#rke-demo'
         discardRules:
           - alertname: 'CPUThrottlingHigh'
