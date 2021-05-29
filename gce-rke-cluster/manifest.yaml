@@ -63,4 +63,4 @@ infraIasc:
     alias: prometheus-config
     chartId: helm-prometheus-k8s
     values:
-      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.RKE_DEMO_SLACK_URL}
+      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
