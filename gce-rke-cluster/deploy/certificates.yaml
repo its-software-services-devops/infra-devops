@@ -14,8 +14,6 @@ issuers:
   - name: lets-encrypt-issuer
     email: pjame.fb@gmail.com
 
-# Be careful about the race condition when create multiple certificates nearly the same time
-# This usually happen when use DNS challenging protocol
 certificates:
   - name: default
     isWildcard: true
