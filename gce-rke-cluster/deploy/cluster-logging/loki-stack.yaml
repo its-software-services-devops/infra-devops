@@ -3,7 +3,7 @@ exposes:
   domain: gce-rke-demo.its-software-services.com
   issuer: lets-encrypt-issuer
   ingresses:
-  - createCert: false
+  - createCert: true
     name: cluster-logging
     service:
       name: grafana
@@ -13,6 +13,7 @@ exposes:
 #Loki stack fro cluster container logs
 loki-stack:
   enabled: true
+  fullnameOverride: loki-cluster-logging
 
   grafana:
     envRenderSecret:
