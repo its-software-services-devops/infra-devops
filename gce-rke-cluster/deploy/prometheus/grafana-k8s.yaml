@@ -1,5 +1,4 @@
 grafana:
-  #image:
-  #  tag: v1.1.0
-
-  envFromSecret: grafana-ldap-credential
+  fullnameOverride: grafana-k8s
+  image:
+    tag: 7.5.7
