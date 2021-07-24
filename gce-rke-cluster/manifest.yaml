@@ -6,7 +6,7 @@ vars: {}
 charts:
   helm-terraform-gcp:
     chartUrl: https://its-software-services-devops.github.io/helm-terraform-gcp/
-    version: 1.1.5-rc13
+    version: 1.1.6
 
   cert-manager:
     chartUrl: https://charts.jetstack.io
@@ -22,21 +22,9 @@ charts:
 
   helm-grafana-k8s:
     chartUrl: https://its-software-services-devops.github.io/helm-grafana-k8s/
-    version: 1.1.0-rc1
+    version: 1.1.0
 
 copy:
-  - from: setup/*.bash
-    toDir: ""
-
-  - from: setup/*.yaml
-    toDir: setup
-
-  - from: deploy/*.bash
-    toDir: ""
-
-  - from: deploy/*.yaml
-    toDir: deploy
-
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 
@@ -48,25 +36,32 @@ copy:
 
   - from: terraform/scripts/*.bash
     toDir: scripts
-    
+
+  - from: setup/setup.bash
+    toDir: ""
+
+  - from: setup/deploy.bash
+    toDir: ""
+
 infraIasc:
   - valuesFiles: [terraform/iasc-its-global.yaml, terraform/iasc-its-gce-rke.yaml]
     transformer: yaml2tf
     alias: gcp
 
   - valuesFiles: [setup/cert-manager.yaml]
-    alias: cert-manager-normalized
+    alias: rendered-cert-manager
     chartId: cert-manager
     namespace: cert-manager
+    toDir: setup
 
-  - valuesFiles: [deploy/certificates.yaml]
-    alias: cluster-certs
-    chartId: helm-cluster-certificates
-    values:
-      - --set-string global.letsEncryptEnv=test
+#  - valuesFiles: [deploy/certificates.yaml]
+#    alias: cluster-certs
+#    chartId: helm-cluster-certificates
+#    values:
+#      - --set-string global.letsEncryptEnv=test
 
-  - valuesFiles: [deploy/prometheus-alert-config.yaml]
-    alias: prometheus-config
-    chartId: helm-prometheus-k8s
-    values:
-      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
+#  - valuesFiles: [deploy/prometheus-alert-config.yaml]
+#    alias: prometheus-config
+#    chartId: helm-prometheus-k8s
+#    values:
+#      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
