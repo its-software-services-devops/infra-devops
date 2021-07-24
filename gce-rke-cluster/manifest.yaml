@@ -37,9 +37,6 @@ copy:
   - from: terraform/scripts/*.bash
     toDir: scripts
 
-  - from: setup/setup.bash
-    toDir: ""
-
   - from: setup/deploy.bash
     toDir: ""
 

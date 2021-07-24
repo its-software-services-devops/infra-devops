@@ -1,7 +1,9 @@
 #/bin/bash
 
+CLUSTER=its-rancher-demo
 CFG=kubeconfig
-terraform output kube_config_yaml > ${CFG}.out
+
+terraform output ${CLUSTER}-kube_config_yaml > ${CFG}.out
 
 LINECOUNT=$(cat ${CFG}.out | wc -l)
 let "TOLINE=${LINECOUNT}-1"
