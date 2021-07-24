@@ -76,4 +76,4 @@ infraIasc:
     alias: rendered-loki-stack
     chartId: helm-loki
     toDir: deploy/cluster-logging
-    namespace: cluster-logging
+    namespace: loki-cluster-logging

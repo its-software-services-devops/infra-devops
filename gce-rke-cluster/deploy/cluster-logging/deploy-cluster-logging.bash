@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NS=cluster-logging
+NS=loki-cluster-logging
 
 echo "####"
 echo "#### Deploying Loki-Stack to [${NS}] ####"
