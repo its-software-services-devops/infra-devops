@@ -1,0 +1,5 @@
+grafana:
+  image:
+    tag: v1.1.0
+
+  envFromSecret: grafana-ldap-credential
