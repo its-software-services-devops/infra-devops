@@ -9,8 +9,8 @@ sed -ne "2,${TOLINE}p" ${CFG}.out > ${CFG}
 
 export KUBECONFIG=$(pwd)/${CFG}
 
-PWD=$(pwd)
-cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${PWD}
-cd deploy/certificates; ./deploy-certificates.bash; cd ${PWD}
+CWD=$(pwd)
+cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
+cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
 
 #./deploy-service-ingress.bash
