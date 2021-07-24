@@ -3,6 +3,9 @@
 NS=cert-manager
 SECRET=gcp-cloud-dns-account-key
 
+echo "####"
+echo "#### Deploying to [${NS}] ####"
+
 kubectl delete secret ${SECRET} -n ${NS}
 
 kubectl create secret generic ${SECRET} \

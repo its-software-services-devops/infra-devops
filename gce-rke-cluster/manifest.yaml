@@ -61,3 +61,8 @@ infraIasc:
     toDir: deploy/prometheus
     values:
       - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
+
+  - valuesFiles: [deploy/prometheus/grafana-k8s.yaml]
+    alias: rendered-grafana-k8s
+    chartId: helm-grafana-k8s
+    toDir: deploy/prometheus
