@@ -1,0 +1,81 @@
+config:
+  defaultChartId: helm-terraform-gcp
+
+vars: {}
+
+charts:
+  helm-terraform-gcp:
+    chartUrl: https://its-software-services-devops.github.io/helm-terraform-gcp/
+    version: 1.1.6
+
+  cert-manager:
+    chartUrl: https://charts.jetstack.io
+    version: 1.3.1
+
+  helm-cluster-certificates:
+    chartUrl: https://its-software-services-devops.github.io/helm-cluster-certificates/
+    version: 1.1.2
+
+  helm-prometheus-k8s:
+    chartUrl: https://its-software-services-devops.github.io/helm-prometheus-k8s/
+    version: 1.2.1
+
+  helm-grafana-k8s:
+    chartUrl: https://its-software-services-devops.github.io/helm-grafana-k8s/
+    version: 1.1.0
+
+  helm-loki:
+    chartUrl: https://its-software-services-devops.github.io/helm-loki/
+    version: 1.1.0-rc1
+
+copy:
+  - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
+    toDir: ""
+
+  - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
+    toDir: "deploy/certificates"
+
+  - from: terraform/configs/*.yaml
+    toDir: configs
+
+  - from: terraform/scripts/*.bash
+    toDir: scripts
+
+infraIasc:
+  - valuesFiles: [terraform/iasc-its-global.yaml, terraform/iasc-its-gce-rke.yaml]
+    transformer: yaml2tf
+    alias: gcp
+
+  - valuesFiles: [setup/cert-manager.yaml]
+    alias: rendered-cert-manager
+    chartId: cert-manager
+    namespace: cert-manager
+    toDir: setup
+
+  - valuesFiles: [deploy/certificates/certificates.yaml]
+    alias: rendered-cluster-certs
+    chartId: helm-cluster-certificates
+    toDir: deploy/certificates
+    values:
+      - --set-string global.letsEncryptEnv=test
+
+  - valuesFiles: [deploy/prometheus/prometheus-alert-config.yaml]
+    alias: rendered-prometheus-config
+    chartId: helm-prometheus-k8s
+    toDir: deploy/prometheus
+    values:
+      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
+
+  - valuesFiles: [deploy/prometheus/grafana-k8s.yaml]
+    alias: rendered-grafana-k8s
+    chartId: helm-grafana-k8s
+    toDir: deploy/prometheus
+    namespace: monitoring
+
+  - valuesFiles: [deploy/cluster-logging/loki-stack.yaml]
+    alias: rendered-loki-stack
+    chartId: helm-loki
+    toDir: deploy/cluster-logging
+    namespace: loki-cluster-logging
+    
+

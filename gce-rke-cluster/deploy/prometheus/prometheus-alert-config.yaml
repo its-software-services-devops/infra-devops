@@ -1,0 +1,17 @@
+alertmanager:
+  generic:
+    namespace: monitoring
+    enabled: true
+    createSecret: true
+    config:
+      alertNoti:
+        slackUrl: ''
+        channel: '#rke-demo'
+        discardRules:
+          - alertname: 'CPUThrottlingHigh'
+            namespace: 'monitoring'            
+          - alertname: 'KubeControllerManagerDown|KubeSchedulerDown'
+
+prometheus: {}
+
+alertRules: {}

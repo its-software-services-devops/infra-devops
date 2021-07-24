@@ -1,0 +1,24 @@
+---
+exposes:
+  domain: gcp-rke-demo.its-software-services.com
+  issuer: lets-encrypt-issuer
+  ingresses:
+  - createCert: true
+    name: cluster-logging
+    service:
+      name: helm-loki-grafana
+      port:
+        number: 80
+
+#Loki stack fro cluster container logs
+loki-stack:
+  enabled: true
+  fullnameOverride: loki-cluster-logging
+
+  grafana:
+    envRenderSecret:
+      LDAP_ADMIN_USER: "will-change"
+      LDAP_ADMIN_PASSWORD: "will-change"
+
+    image:
+      tag: 7.5.7

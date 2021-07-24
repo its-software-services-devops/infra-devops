@@ -1,0 +1,4 @@
+grafana:
+  fullnameOverride: grafana-k8s
+  image:
+    tag: 7.5.7
