@@ -25,3 +25,8 @@ certificates:
     secretName: prometheus-k8s-cert
     issuerRef: lets-encrypt-issuer
     namespace: monitoring
+
+  - name: grafana-k8s
+    secretName: grafana-k8s-cert
+    issuerRef: lets-encrypt-issuer
+    namespace: monitoring    
