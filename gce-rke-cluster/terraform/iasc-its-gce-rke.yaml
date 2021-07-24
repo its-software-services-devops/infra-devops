@@ -33,6 +33,18 @@ gceRke:
       mode: "register"
       role: '["worker"]'
 
+    - host: "its-rancher-worker-03"
+      profile: "worker"
+      zone: "asia-southeast1-c"
+      mode: "register"
+      role: '["worker"]'
+
+    - host: "its-rancher-worker-04"
+      profile: "worker"
+      zone: "asia-southeast1-a"
+      mode: "register"
+      role: '["worker"]'
+
   profiles:
     master:
       terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.12"
@@ -56,7 +68,7 @@ gceRke:
       terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.12"
       bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
-      computeType: "e2-small"    
+      computeType: "e2-medium"    
       localPublicKeyFile: "id_rsa.pub"
       localPrivateKeyFile: "id_rsa"
       deletionProtection: false
