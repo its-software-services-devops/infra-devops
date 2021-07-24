@@ -9,4 +9,4 @@ kubectl create secret generic ${SECRET} \
 --from-file=service-account.json=cloud-dns-rke-demo.json \
 -n ${NS}
 
-kubectl apply -f cluster-certs.yaml
+kubectl apply -f rendered-cluster-certs.yaml

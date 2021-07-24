@@ -28,17 +28,14 @@ copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 
-  - from: gs://its-config-params/gcp-rke-demo-cluster/*.json
-    toDir: ""
+  - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
+    toDir: "deploy/certificates"
 
   - from: terraform/configs/*.yaml
     toDir: configs
 
   - from: terraform/scripts/*.bash
     toDir: scripts
-
-  - from: setup/deploy.bash
-    toDir: ""
 
 infraIasc:
   - valuesFiles: [terraform/iasc-its-global.yaml, terraform/iasc-its-gce-rke.yaml]
@@ -51,11 +48,12 @@ infraIasc:
     namespace: cert-manager
     toDir: setup
 
-#  - valuesFiles: [deploy/certificates.yaml]
-#    alias: cluster-certs
-#    chartId: helm-cluster-certificates
-#    values:
-#      - --set-string global.letsEncryptEnv=test
+  - valuesFiles: [deploy/certificates/certificates.yaml]
+    alias: rendered-cluster-certs
+    chartId: helm-cluster-certificates
+    toDir: deploy/certificates
+    values:
+      - --set-string global.letsEncryptEnv=test
 
 #  - valuesFiles: [deploy/prometheus-alert-config.yaml]
 #    alias: prometheus-config
