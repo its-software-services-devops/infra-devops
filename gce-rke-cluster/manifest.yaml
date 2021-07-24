@@ -24,6 +24,10 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-grafana-k8s/
     version: 1.1.0
 
+  helm-loki:
+    chartUrl: https://its-software-services-devops.github.io/helm-loki/
+    version: 1.1.0-rc1
+
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
@@ -67,3 +71,9 @@ infraIasc:
     chartId: helm-grafana-k8s
     toDir: deploy/prometheus
     namespace: monitoring
+
+  - valuesFiles: [deploy/cluster-logging/loki-stack.yaml]
+    alias: rendered-loki-stack
+    chartId: helm-loki
+    toDir: deploy/cluster-logging
+    namespace: cluster-logging
