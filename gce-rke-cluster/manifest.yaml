@@ -55,8 +55,9 @@ infraIasc:
     values:
       - --set-string global.letsEncryptEnv=test
 
-#  - valuesFiles: [deploy/prometheus-alert-config.yaml]
-#    alias: prometheus-config
-#    chartId: helm-prometheus-k8s
-#    values:
-#      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
+  - valuesFiles: [deploy/prometheus/prometheus-alert-config.yaml]
+    alias: rendered-prometheus-config
+    chartId: helm-prometheus-k8s
+    toDir: deploy/prometheus
+    values:
+      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
