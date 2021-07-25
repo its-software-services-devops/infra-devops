@@ -6,6 +6,6 @@ config:
 providers:
   google: 
     source: "hashicorp/google"
-    version: "3.76.0"
+    version: "~> 3.4.0"
     project: "its-artifact-commons"
     region: "asia-southeast1"
