@@ -22,7 +22,7 @@ sudo chown root:docker /var/run/docker.sock
 sudo yum -y install unzip
 
 # terraform
-TERRAFORM_VERSION=0.14.6 #1.0.3
+TERRAFORM_VERSION=1.0.3
 TERRAFORM_URL=https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 curl -LO "${TERRAFORM_URL}"
 unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
