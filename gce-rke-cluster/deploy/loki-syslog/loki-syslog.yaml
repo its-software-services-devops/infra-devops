@@ -6,14 +6,14 @@ exposes:
   - createCert: false
     name: grafana-syslog
     service:
-      name: grafana
+      name: grafana-syslog
       port:
         number: 80
 
 grafana:
   enabled: true
   fullnameOverride: grafana-syslog
-  lokiQueryUrl: http://loki-aaa-vm-nonprod-query-frontend:3100
+  lokiQueryUrl: http://loki-syslog-query-frontend:3100
   image:
     tag: 7.5.7
 
@@ -24,7 +24,7 @@ promtail:
     basicAuthUser: willchange111
     basicAuthPassword: willchangepwd2222
   config:
-    lokiAddress: https://loki-gateway/loki/api/v1/push
+    lokiAddress: https://loki-syslog-gateway/loki/api/v1/push
 
 loki-distributed:
   enabled: true
