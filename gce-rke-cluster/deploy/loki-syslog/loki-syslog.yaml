@@ -76,4 +76,4 @@ loki-distributed:
           secretName: loki-gcs-bucket-key
     extraVolumeMounts:
       - name: loki-access-gcs
-        mountPath: /etc/secrets    
+        mountPath: /etc/secrets
