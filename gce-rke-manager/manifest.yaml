@@ -6,7 +6,7 @@ vars: {}
 charts:
   helm-terraform-gcp:
     chartUrl: https://its-software-services-devops.github.io/helm-terraform-gcp/
-    version: 1.1.6
+    version: 1.1.7
 
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
