@@ -79,3 +79,9 @@ infraIasc:
     namespace: loki-cluster-logging
     template: loki-cluster-logging
 
+  - valuesFiles: [deploy/loki-syslog/loki-syslog.yaml]
+    alias: rendered-loki-stack
+    chartId: helm-loki
+    toDir: deploy/loki-syslog
+    namespace: loki-syslog
+    template: loki-syslog

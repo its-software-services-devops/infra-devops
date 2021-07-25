@@ -1,0 +1,43 @@
+---
+exposes:
+  domain: gce-rke-demo.its-software-services.com
+  issuer: lets-encrypt-issuer
+  ingresses:
+  - createCert: false
+    name: grafana-syslog
+    service:
+      name: grafana
+      port:
+        number: 80
+
+grafana:
+  enabled: true
+  fullnameOverride: grafana-syslog
+  lokiQueryUrl: http://loki-aaa-vm-nonprod-query-frontend:3100
+  image:
+    tag: 7.5.7
+
+promtail:
+  enabled: true
+  customParams:
+    #Loki gateway authen
+    basicAuthUser: willchange111
+    basicAuthPassword: willchangepwd2222
+  config:
+    lokiAddress: https://loki-gateway/loki/api/v1/push
+
+loki-distributed:
+  enabled: true
+  fullnameOverride: loki-syslog
+
+  gateway:
+    basicAuth:
+      enabled: true
+      username: willchange111
+      password: willchangepwd2222
+
+  customParams:
+    s3User: willchange
+    s3Password: willchangepwd
+    s3Bucket: willchangepwdbb
+    s3Url: https://bucket.minio-applog-a.svc.cluster.local
