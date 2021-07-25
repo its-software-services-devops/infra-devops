@@ -3,7 +3,7 @@ exposes:
   domain: gce-rke-demo.its-software-services.com
   issuer: lets-encrypt-issuer
   ingresses:
-  - createCert: false
+  - createCert: true
     name: grafana-syslog
     service:
       name: grafana-syslog
