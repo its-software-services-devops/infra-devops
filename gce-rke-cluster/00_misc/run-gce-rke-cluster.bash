@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=v0.0.6
+VERSION=v0.0.8
 
 sudo docker run \
 -v $(pwd)/output:/wip/output \

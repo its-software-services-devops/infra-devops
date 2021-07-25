@@ -1,0 +1,79 @@
+---
+exposes:
+  domain: gcp-rke-demo.its-software-services.com
+  issuer: lets-encrypt-issuer
+  ingresses:
+  - createCert: true
+    name: grafana-syslog
+    service:
+      name: grafana-syslog
+      port:
+        number: 80
+
+grafana:
+  enabled: true
+  fullnameOverride: grafana-syslog
+  lokiQueryUrl: http://loki-syslog-query-frontend:3100
+  image:
+    tag: 7.5.7
+
+promtail:
+  enabled: true
+  customParams:
+    #Loki gateway authen
+    basicAuthUser: willchange111
+    basicAuthPassword: willchangepwd2222
+  config:
+    lokiAddress: http://loki-syslog-gateway/loki/api/v1/push
+
+loki-distributed:
+  enabled: true
+  fullnameOverride: loki-syslog
+
+  gateway:
+    basicAuth:
+      enabled: true
+      username: willchange111
+      password: willchangepwd2222
+
+  customParams:
+    backendStorageType: gcs
+    gcsBucket: loki-syslog
+    s3User: willchange
+
+  querier:
+    extraEnv:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/key.json
+    extraVolumes:
+      - name: loki-access-gcs
+        secret:
+          secretName: loki-gcs-bucket-key
+    extraVolumeMounts:
+      - name: loki-access-gcs
+        mountPath: /etc/secrets
+
+  ingester:
+    extraEnv:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/key.json
+    extraVolumes:
+      - name: loki-access-gcs
+        secret:
+          secretName: loki-gcs-bucket-key
+    extraVolumeMounts:
+      - name: loki-access-gcs
+        mountPath: /etc/secrets
+
+  compactor:
+    enabled: true
+    extraEnv:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/key.json
+    extraVolumes:
+      - name: loki-access-gcs
+        secret:
+          secretName: loki-gcs-bucket-key
+    extraVolumeMounts:
+      - name: loki-access-gcs
+        mountPath: /etc/secrets

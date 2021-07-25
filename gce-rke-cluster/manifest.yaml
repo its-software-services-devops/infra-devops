@@ -6,7 +6,7 @@ vars: {}
 charts:
   helm-terraform-gcp:
     chartUrl: https://its-software-services-devops.github.io/helm-terraform-gcp/
-    version: 1.1.6
+    version: 1.1.7
 
   cert-manager:
     chartUrl: https://charts.jetstack.io
@@ -26,7 +26,7 @@ charts:
 
   helm-loki:
     chartUrl: https://its-software-services-devops.github.io/helm-loki/
-    version: 1.1.0-rc1
+    version: 1.1.0-rc3
 
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
@@ -34,6 +34,9 @@ copy:
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
+
+  - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
+    toDir: "deploy/loki-syslog"
 
   - from: terraform/configs/*.yaml
     toDir: configs
@@ -77,5 +80,11 @@ infraIasc:
     chartId: helm-loki
     toDir: deploy/cluster-logging
     namespace: loki-cluster-logging
-    
+    template: loki-cluster-logging
 
+  - valuesFiles: [deploy/loki-syslog/loki-syslog.yaml]
+    alias: rendered-loki-syslog
+    chartId: helm-loki
+    toDir: deploy/loki-syslog
+    namespace: loki-syslog
+    template: loki-syslog

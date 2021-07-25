@@ -1,7 +1,7 @@
 #/bin/bash
 
 CFG=kubeconfig
-terraform output its-rancher-demo-kube_config_yaml > ${CFG}.out
+terraform output kube_config_yaml > ${CFG}.out
 
 LINECOUNT=$(cat ${CFG}.out | wc -l)
 let "TOLINE=${LINECOUNT}-1"
@@ -15,3 +15,4 @@ cd deploy/01_basics; ./deploy-basics.bash; cd ${CWD}
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
 cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
 cd deploy/cluster-logging; ./deploy-cluster-logging.bash; cd ${CWD}
+cd deploy/loki-syslog; ./deploy-loki-syslog.bash; cd ${CWD}
