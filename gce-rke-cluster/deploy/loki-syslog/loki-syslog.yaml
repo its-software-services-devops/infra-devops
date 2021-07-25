@@ -24,7 +24,7 @@ promtail:
     basicAuthUser: willchange111
     basicAuthPassword: willchangepwd2222
   config:
-    lokiAddress: https://loki-syslog-gateway/loki/api/v1/push
+    lokiAddress: http://loki-syslog-gateway/loki/api/v1/push
 
 loki-distributed:
   enabled: true
