@@ -6,7 +6,7 @@ gceRke:
 
   rke:
     cluster_name: "its-rancher-demo"
-    kubernetes_version: "v1.20.6-rancher1-1" #"v1.19.6-rancher1-1"
+    kubernetes_version: "v1.20.6-rancher1-1"
     ignore_docker_version: true
     prefix_path: "/var/lib/toolbox/rke" #CoreOs need to use this path
 
@@ -60,7 +60,7 @@ gceRke:
 
   profiles:
     master:
-      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.12"
+      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.13"
       bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-medium"    
@@ -78,7 +78,7 @@ gceRke:
       remoteExecByNatIP: false
 
     worker:
-      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.12"
+      terraformVmModule: "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.13"
       bootDiskImage: "projects/its-artifact-commons/global/images/basic-centos-7-v20210512-develop-snapshot"
       bootDiskSize: 100
       computeType: "e2-medium"    
