@@ -40,3 +40,27 @@ loki-distributed:
     backendStorageType: gcs
     gcsBucket: loki-syslog
     s3User: willchange
+
+  querier:
+    extraEnv:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/key.json
+    extraVolumes:
+      - name: loki-access-gcs
+        secret:
+          secretName: loki-gcs-bucket-key
+    extraVolumeMounts:
+      - name: loki-access-gcs
+        mountPath: /etc/secrets
+
+  ingester:
+    extraEnv:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/key.json
+    extraVolumes:
+      - name: loki-access-gcs
+        secret:
+          secretName: loki-gcs-bucket-key
+    extraVolumeMounts:
+      - name: loki-access-gcs
+        mountPath: /etc/secrets
