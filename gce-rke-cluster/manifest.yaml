@@ -35,6 +35,9 @@ copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
 
+  - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
+    toDir: "deploy/loki-syslog"
+
   - from: terraform/configs/*.yaml
     toDir: configs
 
