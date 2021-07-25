@@ -37,7 +37,6 @@ loki-distributed:
       password: willchangepwd2222
 
   customParams:
+    backendStorageType: gcs
+    gcsBucket: loki-syslog
     s3User: willchange
-    s3Password: willchangepwd
-    s3Bucket: willchangepwdbb
-    s3Url: https://bucket.minio-applog-a.svc.cluster.local
