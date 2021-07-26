@@ -32,6 +32,10 @@ charts:
     chartUrl: https://strimzi.io/charts/
     version: 0.24.0
 
+  external-dns:
+    chartUrl: https://charts.bitnami.com/bitnami/
+    version:  5.2.1
+
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
@@ -41,6 +45,9 @@ copy:
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
     toDir: "deploy/loki-syslog"
+
+  - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
+    toDir: "deploy/external-dns"
 
   - from: terraform/configs/*.yaml
     toDir: configs
@@ -101,3 +108,9 @@ infraIasc:
     toDir: deploy/loki-syslog
     namespace: loki-syslog
     template: loki-syslog
+
+  - valuesFiles: [deploy/external-dns/external-dns.yaml]
+    alias: rendered-external-dns
+    chartId: external-dns
+    toDir: deploy/external-dns
+    namespace: external-dns
