@@ -28,9 +28,9 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-loki/
     version: 1.1.0-rc3
 
-  #strimzi-kafka-operator:
-  #  chartUrl: https://strimzi.io/charts/
-  #  version: 0.24.0
+  strimzi-kafka-operator:
+    chartUrl: https://strimzi.io/charts/
+    version: 0.24.0
 
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
