@@ -59,14 +59,14 @@ infraIasc:
     namespace: cert-manager
     toDir: setup
 
-  #- valuesFiles: []
-  #  alias: rendered-kafka-operator
-  #  chartId: strimzi-kafka-operator
-  #  namespace: kafka
-  #  toDir: setup/kafka-operator
-  #  values:
-  #    - --set logLevel=INFO
-  #    - --set-string watchNamespaces[0]=kafka
+  - valuesFiles: []
+    alias: rendered-kafka-operator
+    chartId: strimzi-kafka-operator
+    namespace: kafka-operator
+    toDir: setup/kafka-operator
+    values:
+      - --set logLevel=INFO
+      - --set watchAnyNamespace=true
 
   - valuesFiles: [deploy/certificates/certificates.yaml]
     alias: rendered-cluster-certs
