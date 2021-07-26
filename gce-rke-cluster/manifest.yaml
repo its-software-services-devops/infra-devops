@@ -66,7 +66,7 @@ infraIasc:
     toDir: setup/kafka-operator
     values:
       - --set logLevel=INFO
-      - --set-string watchNamespaces='[kafka]'
+      - --set-string watchNamespaces[0]=kafka
 
   - valuesFiles: [deploy/certificates/certificates.yaml]
     alias: rendered-cluster-certs
