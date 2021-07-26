@@ -3,7 +3,7 @@ provider: google
 sources: ['service']
 
 domainFilters:
-  - gcp-rke-demo.its-software-services.com
+  #- gcp-rke-demo.its-software-services.com
   - its-software-services.com
 
 google:
