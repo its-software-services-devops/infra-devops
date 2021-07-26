@@ -11,4 +11,4 @@ google:
   serviceAccountSecret: gcp-cloud-dns-key
   serviceAccountSecretKey: key.json
 
-txtOwnerId: gcp-rke-demo-ext-dns
+txtOwnerId: gcp-rke-demo-ext-dnss
