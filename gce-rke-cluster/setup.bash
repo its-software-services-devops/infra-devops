@@ -13,3 +13,6 @@ export KUBECONFIG=$(pwd)/${CFG}
 cd setup
 ./setup-prometheus.bash
 ./setup-cert-manager.bash
+
+CWD=$(pwd)
+cd kafka-operator; ./setup-kafka-operator.bash; cd ${CWD}
