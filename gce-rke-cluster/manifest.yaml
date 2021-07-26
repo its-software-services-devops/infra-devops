@@ -28,9 +28,9 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-loki/
     version: 1.1.0-rc3
 
-  strimzi-kafka-operator:
-    chartUrl: https://strimzi.io/charts/
-    version: 0.24.0
+  #strimzi-kafka-operator:
+  #  chartUrl: https://strimzi.io/charts/
+  #  version: 0.24.0
 
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
@@ -59,14 +59,14 @@ infraIasc:
     namespace: cert-manager
     toDir: setup
 
-  - valuesFiles: []
-    alias: rendered-kafka-operator
-    chartId: strimzi-kafka-operator
-    namespace: kafka
-    toDir: setup/kafka-operator
-    values:
-      - --set logLevel=INFO
-      - --set-string watchNamespaces[0]=kafka
+  #- valuesFiles: []
+  #  alias: rendered-kafka-operator
+  #  chartId: strimzi-kafka-operator
+  #  namespace: kafka
+  #  toDir: setup/kafka-operator
+  #  values:
+  #    - --set logLevel=INFO
+  #    - --set-string watchNamespaces[0]=kafka
 
   - valuesFiles: [deploy/certificates/certificates.yaml]
     alias: rendered-cluster-certs
