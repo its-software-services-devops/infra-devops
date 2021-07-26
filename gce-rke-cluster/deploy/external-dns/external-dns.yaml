@@ -8,3 +8,5 @@ google:
   project: its-artifact-commons
   serviceAccountSecret: gcp-cloud-dns-key
   serviceAccountSecretKey: key.json
+
+txtOwnerId: gcp-rke-demo-ext-dns
