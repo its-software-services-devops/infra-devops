@@ -1,5 +1,8 @@
 provider: google
 
+domainFilters:
+  - gcp-rke-demo.its-software-services.com
+
 google:
   project: its-artifact-commons
   serviceAccountSecret: gcp-cloud-dns-key
