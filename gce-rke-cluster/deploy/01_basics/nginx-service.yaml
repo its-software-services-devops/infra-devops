@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: nginx-ext
   namespace: ingress-nginx
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: '*.gcp-rke-demo.its-software-services.com' 
 spec:
   type: LoadBalancer
   selector:

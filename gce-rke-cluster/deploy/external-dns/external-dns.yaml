@@ -1,5 +1,6 @@
 fullnameOverride: gcp-cloud-dns
 provider: google
+sources: ['service']
 
 domainFilters:
   - gcp-rke-demo.its-software-services.com
