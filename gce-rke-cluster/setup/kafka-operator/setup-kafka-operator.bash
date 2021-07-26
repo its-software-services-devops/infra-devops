@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NS=kafka-operator
+NS=kafka
 
 echo "####"
 echo "#### Setting Kafka Operator into [${NS}] ####"

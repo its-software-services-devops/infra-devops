@@ -62,7 +62,7 @@ infraIasc:
   - valuesFiles: []
     alias: rendered-kafka-operator
     chartId: strimzi-kafka-operator
-    namespace: kafka-operator
+    namespace: kafka
     toDir: setup/kafka-operator
     values:
       - --set logLevel=INFO
