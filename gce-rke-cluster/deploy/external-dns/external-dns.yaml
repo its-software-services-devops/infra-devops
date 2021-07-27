@@ -1,0 +1,14 @@
+fullnameOverride: gcp-cloud-dns
+provider: google
+sources: ['service']
+
+domainFilters:
+  #- gcp-rke-demo.its-software-services.com
+  - its-software-services.com
+
+google:
+  project: its-artifact-commons
+  serviceAccountSecret: gcp-cloud-dns-key
+  serviceAccountSecretKey: key.json
+
+txtOwnerId: gcp-rke-demo-ext-dnss
