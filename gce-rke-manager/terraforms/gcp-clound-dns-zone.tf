@@ -7,7 +7,7 @@ resource "google_dns_managed_zone" "gcp-rke-demo" {
   }
 }
 
-resource "google_dns_record_set" "gcp-rke-demo-ns" {
+resource "google_dns_record_set" "gcp-rke-demo-faked-by-terraform-a" {
   name = "axyshai-terraform-add.gcp-rke-demo.its-software-services.com."
   type = "A"
   ttl  = 300
