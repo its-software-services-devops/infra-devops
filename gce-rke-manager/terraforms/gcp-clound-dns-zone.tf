@@ -14,7 +14,7 @@ resource "google_dns_record_set" "gcp-rke-demo-faked-by-terraform-a" {
 
   managed_zone = google_dns_managed_zone.gcp-rke-demo.name
 
-  rrdatas = "192.168.1.66"
+  rrdatas = ["192.168.1.66"]
 }
 
 resource "google_dns_record_set" "gcp-rke-demo-ns" {
