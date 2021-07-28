@@ -15,11 +15,11 @@ spec:
         port: 9093
         type: internal
         tls: true
-      - name: external
+      - name: external-np
         port: 9094
         type: nodeport
         tls: true
-      - name: external
+      - name: external-lb
         port: 9095
         type: loadbalancer
         tls: true
