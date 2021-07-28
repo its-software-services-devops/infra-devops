@@ -1,0 +1,50 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: kafka-basic-app
+  labels:
+    strimzi.io/cluster: kafka-log-broker
+spec:
+  authentication:
+    type: tls
+  authorization:
+    type: simple
+    acls:
+      # Example consumer Acls for topic kafka-syslog-topic using consumer group kafka-syslog-group
+      - resource:
+          type: topic
+          name: kafka-syslog-topic
+          patternType: literal
+        operation: Read
+        host: "*"
+      - resource:
+          type: topic
+          name: kafka-syslog-topic
+          patternType: literal
+        operation: Describe
+        host: "*"
+      - resource:
+          type: group
+          name: kafka-syslog-group
+          patternType: literal
+        operation: Read
+        host: "*"
+      # Example Producer Acls for topic kafka-syslog-topic
+      - resource:
+          type: topic
+          name: kafka-syslog-topic
+          patternType: literal
+        operation: Write
+        host: "*"
+      - resource:
+          type: topic
+          name: kafka-syslog-topic
+          patternType: literal
+        operation: Create
+        host: "*"
+      - resource:
+          type: topic
+          name: kafka-syslog-topic
+          patternType: literal
+        operation: Describe
+        host: "*"
