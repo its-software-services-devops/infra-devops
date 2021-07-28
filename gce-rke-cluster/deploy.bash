@@ -17,3 +17,4 @@ cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
 cd deploy/cluster-logging; ./deploy-cluster-logging.bash; cd ${CWD}
 cd deploy/loki-syslog; ./deploy-loki-syslog.bash; cd ${CWD}
 cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
+cd deploy/kafka-log-broker; ./deploy-kafka-cluster.bash; cd ${CWD}
