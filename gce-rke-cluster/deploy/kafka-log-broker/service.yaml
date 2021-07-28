@@ -4,6 +4,7 @@ metadata:
   name: kafka-log-broker-np
   annotations:
     external-dns.alpha.kubernetes.io/hostname: 'kafka-log-broker.gcp-rke-demo.its-software-services.com' 
+    external-dns.alpha.kubernetes.io/access: private
 spec:
   type: NodePort
   selector:
