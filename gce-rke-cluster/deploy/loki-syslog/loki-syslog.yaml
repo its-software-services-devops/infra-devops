@@ -25,6 +25,13 @@ promtail:
     basicAuthPassword: willchangepwd2222
   config:
     lokiAddress: http://loki-syslog-gateway/loki/api/v1/push
+  extraPorts:
+    syslog:
+      service:
+        nodePort: 32001
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: promtail-syslog.gcp-rke-demo.its-software-services.com.
+        external-dns.alpha.kubernetes.io/access: private
 
 loki-distributed:
   enabled: true
