@@ -36,6 +36,10 @@ charts:
     chartUrl: https://charts.bitnami.com/bitnami/
     version:  5.2.1
 
+  vector-aggregator:
+    chartUrl: https://packages.timber.io/helm/nightly/
+    version:  0.16.0-nightly-2021-07-31
+
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
@@ -114,3 +118,9 @@ infraIasc:
     chartId: external-dns
     toDir: deploy/external-dns
     namespace: external-dns
+
+  - valuesFiles: [deploy/vector-loki/vector-loki.yaml]
+    alias: rendered-vector-loki
+    chartId: vector-aggregator
+    toDir: deploy/vector-loki
+    namespace: vector-loki

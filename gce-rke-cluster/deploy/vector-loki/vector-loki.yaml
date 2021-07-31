@@ -1,0 +1,30 @@
+rbac:
+  enabled: true
+
+serviceAccount:
+  create: true
+
+storage:
+  mode: managedPersistentVolumeClaim
+  managedPersistentVolumeClaim:
+    size: 10Gi
+
+fullnameOverride: vector-loki
+
+existingConfigMap: true
+
+customConfig:
+  data_dir: "/vector-data-dir"
+  sources:
+    host_metrics:
+    internal_metrics:
+      type: internal_metrics
+  vector:
+     type: vector
+     address: 0.0.0.0:9000
+     version: "2"
+  sinks:
+    prometheus_sink:
+      type: prometheus_exporter
+      inputs: ["internal_metrics"]
+      address: 0.0.0.0:9090
