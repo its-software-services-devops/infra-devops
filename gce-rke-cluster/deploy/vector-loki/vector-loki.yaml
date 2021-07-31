@@ -11,8 +11,6 @@ storage:
 
 fullnameOverride: vector-loki
 
-existingConfigMap: true
-
 customConfig:
   data_dir: "/vector-data-dir"
   sources:
