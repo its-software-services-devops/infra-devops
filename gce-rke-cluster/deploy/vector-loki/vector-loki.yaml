@@ -26,7 +26,7 @@ customConfig:
   sources:
     kafka_syslog:
       type: kafka
-      bootstrap_servers: kafka-log-bootstrap.gcp-rke-demo.its-software-services.com:31888
+      bootstrap_servers: kafka-log-broker-kafka-bootstrap.kafka-log-broker.svc.cluster.local:9001
       group_id: syslog-to-loki
       topics:
         - kafka-syslog-topic
