@@ -40,7 +40,7 @@ customConfig:
       type: loki
       inputs:
         - kafka_syslog
-      endpoint: http://loki-syslog-gateway.loki-syslog.svc.cluster.local/loki/api/v1/push
+      endpoint: http://loki-syslog-gateway.loki-syslog.svc.cluster.local:80/loki/api/v1/push/
       auth:
         strategy: basic
         user: willchange111
