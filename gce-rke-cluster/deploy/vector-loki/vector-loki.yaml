@@ -54,6 +54,8 @@ customConfig:
         password: willchangepwd2222
       labels:
         sink_name: loki_syslog
+        message: "{{ message }}"
+        hostname: "{{ hostname }}"
       out_of_order_action: drop
       remove_timestamp: true
       encoding:
