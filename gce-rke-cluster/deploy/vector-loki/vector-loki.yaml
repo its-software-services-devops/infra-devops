@@ -26,7 +26,11 @@ customConfig:
   sources:
     kafka_syslog:
       type: kafka
-      bootstrap_servers: kafka-log-broker-kafka-bootstrap.kafka-log-broker.svc.cluster.local:9001
+      bootstrap_servers: >
+        kafka-log-broker-kafka-np-bootstrap.kafka-log-broker.svc.cluster.local:9004,
+        kafka-log-broker-kafka-np-0.kafka-log-broker.svc.cluster.local:9004,
+        kafka-log-broker-kafka-np-1.kafka-log-broker.svc.cluster.local:9004,
+        kafka-log-broker-kafka-np-2.kafka-log-broker.svc.cluster.local:9004
       group_id: syslog-to-loki
       topics:
         - kafka-syslog-topic
