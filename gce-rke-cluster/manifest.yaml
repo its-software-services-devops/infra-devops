@@ -112,6 +112,11 @@ infraIasc:
     toDir: deploy/loki-syslog
     namespace: loki-syslog
     template: loki-syslog
+    values:
+      - --set-string promtail.customParams.basicAuthUser=${SEC.LOKI_AUTH_USER}
+      - --set-string promtail.customParams.basicAuthPassword=${SEC.LOKI_AUTH_PASSWORD}
+      - --set-string loki-distributed.gateway.basicAuth.username=${SEC.LOKI_AUTH_USER}
+      - --set-string loki-distributed.gateway.basicAuth.password=${SEC.LOKI_AUTH_PASSWORD}
 
   - valuesFiles: [deploy/external-dns/external-dns.yaml]
     alias: rendered-external-dns
@@ -124,3 +129,6 @@ infraIasc:
     chartId: vector-aggregator
     toDir: deploy/vector-loki
     namespace: vector-loki
+    values:
+      - --set-string customConfig.sinks.loki_syslog.auth.user=${SEC.LOKI_AUTH_USER}
+      - --set-string customConfig.sinks.loki_syslog.auth.password=${SEC.LOKI_AUTH_PASSWORD}
