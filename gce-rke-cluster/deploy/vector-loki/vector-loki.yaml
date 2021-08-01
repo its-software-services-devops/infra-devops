@@ -27,7 +27,7 @@ customConfig:
     kafka_syslog:
       type: kafka
       bootstrap_servers: >
-        kafka-log-broker-kafka-np-bootstrap.kafka-log-broker.svc.cluster.local:9094
+        kafka-log-broker-kafka-bootstrap.kafka-log-broker.svc.cluster.local:9092
       group_id: syslog-to-loki
       topics:
         - kafka-syslog-topic
