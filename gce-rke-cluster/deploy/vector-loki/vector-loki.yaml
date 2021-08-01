@@ -40,8 +40,11 @@ customConfig:
       type: remap
       inputs:
         - kafka_syslog
-      source: . |= parse_syslog!(.message)
-
+      source: |-
+        org_message = .message
+        . = parse_json!(org_message)
+        .message = org_message
+        
   sinks:
     loki_syslog:
       type: loki
