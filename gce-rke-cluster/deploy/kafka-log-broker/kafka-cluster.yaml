@@ -11,20 +11,20 @@ spec:
         port: 9092
         type: internal
         tls: false
-        configuration:
-          brokers:
-          - broker: 0
-            advertisedHost: kafka-log-broker-kafka-internal-0.kafka-log-broker.svc.cluster.local
-          - broker: 1
-            advertisedHost: kafka-log-broker-kafka-internal-1.kafka-log-broker.svc.cluster.local
-          - broker: 2
-            advertisedHost: kafka-log-broker-kafka-internal-2.kafka-log-broker.svc.cluster.local
+        #configuration:
+        #  brokers:
+        #  - broker: 0
+        #    advertisedHost: kafka-log-broker-kafka-internal-0.kafka-log-broker.svc.cluster.local
+        #  - broker: 1
+        #    advertisedHost: kafka-log-broker-kafka-internal-1.kafka-log-broker.svc.cluster.local
+        #  - broker: 2
+        #    advertisedHost: kafka-log-broker-kafka-internal-2.kafka-log-broker.svc.cluster.local
 
       - name: tls
         port: 9093
         type: internal
         tls: true
-        
+
       - name: np
         port: 9094
         type: nodeport
