@@ -44,7 +44,8 @@ customConfig:
         strategy: basic
         user: willchange111
         password: willchangepwd2222
-      labels: {}
+      labels:
+        sink-name: loki_syslog
       out_of_order_action: drop
       remove_timestamp: true
       encoding:
