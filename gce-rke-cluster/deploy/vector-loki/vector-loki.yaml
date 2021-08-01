@@ -45,16 +45,9 @@ customConfig:
         strategy: basic
         user: willchange111
         password: willchangepwd2222
-      labels: null
+      labels: {}
       out_of_order_action: drop
-      remove_label_fields: null
       remove_timestamp: true
-      buffer: null
-      batch: null
-      encoding: null
-      healthcheck: null
-      request: null
-      tls: null
 
     prometheus_sink:
       type: prometheus_exporter
