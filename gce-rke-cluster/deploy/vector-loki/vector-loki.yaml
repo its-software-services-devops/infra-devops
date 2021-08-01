@@ -35,11 +35,18 @@ customConfig:
     internal_metrics:
       type: internal_metrics
 
+  transforms:
+    text_to_syslog:
+      type: remap
+      inputs:
+        - kafka_syslog
+      source: . |= parse_syslog!(.message)
+
   sinks:
     loki_syslog:
       type: loki
       inputs:
-        - kafka_syslog
+        - text_to_syslog
       endpoint: http://loki-syslog-gateway.loki-syslog.svc.cluster.local/ #Important to end with /
       auth:
         strategy: basic
