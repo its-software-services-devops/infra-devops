@@ -55,8 +55,12 @@ customConfig:
       labels:
         sink_name: loki_syslog
         #Below key use printf() to escape Helm interprets {{ }}
-        message: >-
-          {{ printf "{{ message }}" }}
+        appname: >-
+          {{ printf "{{ appname }}" }}
+        facility: >-
+          {{ printf "{{ facility }}" }}
+        severity: >-
+          {{ printf "{{ severity }}" }}
         hostname: >-
           {{ printf "{{ hostname }}" }}
       out_of_order_action: drop
