@@ -1,3 +1,5 @@
+fullnameOverride: vector-loki
+
 rbac:
   enabled: true
 
@@ -9,19 +11,51 @@ storage:
   managedPersistentVolumeClaim:
     size: 10Gi
 
-fullnameOverride: vector-loki
+extraContainersPorts:
+  - containerPort: 9090 # Prometheus
+
+service:
+  ports:
+    - name: http
+      port: 9090 # Prometheus
+      protocol: TCP
+      targetPort: 9090
 
 customConfig:
-  data_dir: "/vector-data-dir"
+  data_dir: "/vector-data-dir" #Do not change this if you don't know the impact
   sources:
-    host_metrics:
+    kafka_syslog:
+      type: kafka
+      acknowledgements: null
+      bootstrap_servers: kafka-log-bootstrap.gcp-rke-demo.its-software-services.com:31888
+      group_id: syslog-to-loki
+      topics:
+        - kafka-syslog-topic
+
     internal_metrics:
       type: internal_metrics
-  vector:
-     type: vector
-     address: 0.0.0.0:9000
-     version: "2"
+
   sinks:
+    loki_syslog:
+      type: loki
+      inputs:
+        - kafka_syslog
+      endpoint: http://loki-syslog-gateway.loki-syslog.svc.cluster.local/loki/api/v1/push
+      auth:
+        strategy: basic
+        user: willchange111
+        password: willchangepwd2222
+      labels: null
+      out_of_order_action: drop
+      remove_label_fields: null
+      remove_timestamp: true
+      buffer: null
+      batch: null
+      encoding: null
+      healthcheck: null
+      request: null
+      tls: null
+
     prometheus_sink:
       type: prometheus_exporter
       inputs: ["internal_metrics"]
