@@ -51,6 +51,8 @@ customConfig:
       remove_timestamp: true
       encoding:
         codec: text
+      healthcheck:
+        enabled: false
 
     prometheus_sink:
       type: prometheus_exporter
