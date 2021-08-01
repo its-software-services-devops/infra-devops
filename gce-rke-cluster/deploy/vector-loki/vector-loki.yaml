@@ -1,0 +1,86 @@
+fullnameOverride: vector-loki
+
+rbac:
+  enabled: true
+
+serviceAccount:
+  create: true
+
+storage:
+  mode: managedPersistentVolumeClaim
+  managedPersistentVolumeClaim:
+    size: 10Gi
+
+extraContainersPorts:
+  - containerPort: 9090 # Prometheus
+
+service:
+  ports:
+    - name: http
+      port: 9090 # Prometheus
+      protocol: TCP
+      targetPort: 9090
+
+customConfig:
+  data_dir: "/vector-data-dir" #Do not change this if you don't know the impact
+  sources:
+    kafka_syslog:
+      type: kafka
+      bootstrap_servers: >
+        kafka-log-broker-kafka-bootstrap.kafka-log-broker.svc.cluster.local:9092
+      group_id: syslog-to-loki
+      topics:
+        - kafka-syslog-topic
+
+    internal_metrics:
+      type: internal_metrics
+
+  transforms:
+    text_to_syslog:
+      type: remap
+      inputs:
+        - kafka_syslog
+      source: |-
+        org_message = .message
+        . |= parse_syslog!(.message)
+        .message = org_message
+
+  sinks:
+    loki_syslog:
+      type: loki
+      inputs:
+        - text_to_syslog
+      endpoint: http://loki-syslog-gateway.loki-syslog.svc.cluster.local/ #Important to end with /
+      auth:
+        strategy: basic
+        user: willchange111
+        password: willchangepwd2222
+      labels:
+        sink_name: loki_syslog
+        #Below key use printf() to escape Helm interprets {{ }}
+        appname: >-
+          {{ printf "{{ appname }}" }}
+        facility: >-
+          {{ printf "{{ facility }}" }}
+        severity: >-
+          {{ printf "{{ severity }}" }}
+        hostname: >-
+          {{ printf "{{ hostname }}" }}
+      out_of_order_action: drop
+      remove_timestamp: true
+      encoding:
+        codec: text
+      healthcheck:
+        enabled: false
+
+    prometheus_sink:
+      type: prometheus_exporter
+      inputs: ["internal_metrics"]
+      address: 0.0.0.0:9090
+
+    #debug_console:
+    #  type: console
+    #  inputs:
+    #    - text_to_syslog
+    #  target: stdout
+    #  encoding: json
