@@ -46,7 +46,7 @@ loki-distributed:
   customParams:
     backendStorageType: gcs
     gcsBucket: loki-syslog
-    s3User: willchange
+    s3User: notused
 
   querier:
     extraEnv:
