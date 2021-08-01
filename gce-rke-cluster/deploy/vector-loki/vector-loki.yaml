@@ -78,6 +78,6 @@ customConfig:
     debug_console:
       type: console
       inputs:
-        - kafka_syslog
+        - text_to_syslog
       target: stdout
       encoding: json
