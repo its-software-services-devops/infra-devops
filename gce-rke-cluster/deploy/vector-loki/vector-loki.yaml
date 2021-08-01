@@ -75,9 +75,9 @@ customConfig:
       inputs: ["internal_metrics"]
       address: 0.0.0.0:9090
 
-    debug_console:
-      type: console
-      inputs:
-        - text_to_syslog
-      target: stdout
-      encoding: json
+    #debug_console:
+    #  type: console
+    #  inputs:
+    #    - text_to_syslog
+    #  target: stdout
+    #  encoding: json
