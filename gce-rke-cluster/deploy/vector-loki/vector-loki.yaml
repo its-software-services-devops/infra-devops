@@ -48,7 +48,8 @@ customConfig:
       labels: {}
       out_of_order_action: drop
       remove_timestamp: true
-      encoding: {}
+      encoding:
+        codec: text
 
     prometheus_sink:
       type: prometheus_exporter
