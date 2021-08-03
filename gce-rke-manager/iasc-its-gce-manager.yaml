@@ -1,6 +1,6 @@
 gceSets:  
   groupName: "its-manager"
-  network: "default"
+  network: "team-a-vpc-network"
   region: "asia-southeast1"
 
   instances:
