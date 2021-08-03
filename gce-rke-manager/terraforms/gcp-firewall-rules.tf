@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "k8s-manager-to-cluster" {
   name    = "k8s-manager-to-cluster"
-  network = "default"
+  network = "team-a-vpc-network"
   priority = 1000
 
   allow {
@@ -18,7 +18,7 @@ resource "google_compute_firewall" "k8s-manager-to-cluster" {
 
 resource "google_compute_firewall" "k8s-nodes-internode-connect" {
   name    = "k8s-nodes-internode-connect"
-  network = "default"
+  network = "team-a-vpc-network"
   priority = 1001
 
   allow {
@@ -36,7 +36,7 @@ resource "google_compute_firewall" "k8s-nodes-internode-connect" {
 
 resource "google_compute_firewall" "k8s-nodes-deny-public" {
   name    = "k8s-nodes-deny-public"
-  network = "default"
+  network = "team-a-vpc-network"
   priority = 1003
 
   deny {
