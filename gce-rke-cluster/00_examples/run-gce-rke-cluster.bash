@@ -12,3 +12,5 @@ sudo docker run \
 -e IASC_VAULT_SECRETS=gs://its-config-params/gcp-rke-demo-cluster/secrets.txt \
 -it gcr.io/its-artifact-commons/iasc:${VERSION} \
 init
+
+sudo chown -R admin:admin output

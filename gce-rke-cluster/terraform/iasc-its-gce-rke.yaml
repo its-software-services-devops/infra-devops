@@ -1,6 +1,6 @@
 gceRke:  
   groupName: "its-rancher-sandbox"
-  network: "default"
+  network: "team-a-vpc-network"
   region: "asia-southeast1"
   clusterYaml: configs/cluster.yaml
 
@@ -74,7 +74,7 @@ gceRke:
       tags: '["k8s-master"]'
       externalDisks: []
       serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
-      enableNatIP: true
+      enableNatIP: false
       remoteExecByNatIP: false
 
     worker:
@@ -92,5 +92,5 @@ gceRke:
       tags: '["k8s-worker"]'
       externalDisks: []
       serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
-      enableNatIP: true
+      enableNatIP: false
       remoteExecByNatIP: false

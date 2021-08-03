@@ -1,6 +1,6 @@
 gceSets:  
   groupName: "its-manager"
-  network: "default"
+  network: "team-a-vpc-network"
   region: "asia-southeast1"
 
   instances:
@@ -24,5 +24,5 @@ gceSets:
       tags: '["k8s-manager"]'
       externalDisks: []
       serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
-      enableNatIP: true
+      enableNatIP: true #terraform will need it to SSH into
       remoteExecByNatIP: true
