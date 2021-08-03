@@ -1,6 +1,6 @@
 gceRke:  
   groupName: "its-rancher-sandbox"
-  network: "default"
+  network: "team-a-vpc-network"
   region: "asia-southeast1"
   clusterYaml: configs/cluster.yaml
 
