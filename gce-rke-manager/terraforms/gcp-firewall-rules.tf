@@ -22,11 +22,7 @@ resource "google_compute_firewall" "k8s-nodes-internode-connect" {
   priority = 1001
 
   allow {
-    protocol = "icmp"
-  }
-
-  allow {
-    protocol = "tcp"
+    protocol = "all"
   }
 
   source_tags = ["k8s-master", "k8s-worker"]
