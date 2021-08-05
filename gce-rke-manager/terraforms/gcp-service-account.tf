@@ -4,11 +4,8 @@ resource "google_service_account" "gcp-rke-demo-sa" {
   display_name = "gcp-rke-demo SA"
 }
 
-resource "google_project_iam_binding" "node-gcp-rke-demo" {
+resource "google_project_iam_member" "node-gcp-rke-demo" {
   project = "its-artifact-commons"
   role    = "roles/owner"
-
-  members = [
-    "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}",
-  ]
+  member  = "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
 }
