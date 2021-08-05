@@ -5,6 +5,7 @@ resource "google_service_account" "gcp-rke-demo-sa" {
 }
 
 resource "google_project_iam_policy" "project" {
+  project     = "its-artifact-commons"
   policy_data = data.google_iam_policy.node-gcp-rke-demo.policy_data
 }
 
