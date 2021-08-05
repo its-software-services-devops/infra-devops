@@ -73,7 +73,7 @@ gceRke:
       remoteProvisionerPath: "/home/cicd"
       tags: '["k8s-master"]'
       externalDisks: []
-      serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
+      serviceAccount: "gcp-rke-demo-sa@its-artifact-commons.iam.gserviceaccount.com"
       enableNatIP: false
       remoteExecByNatIP: false
 
@@ -91,6 +91,6 @@ gceRke:
       remoteProvisionerPath: "/home/cicd"
       tags: '["k8s-worker"]'
       externalDisks: []
-      serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
+      serviceAccount: "gcp-rke-demo-sa@its-artifact-commons.iam.gserviceaccount.com"
       enableNatIP: false
       remoteExecByNatIP: false

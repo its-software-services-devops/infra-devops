@@ -23,6 +23,6 @@ gceSets:
       remoteProvisionerPath: "/home/cicd"
       tags: '["k8s-manager"]'
       externalDisks: []
-      serviceAccount: "devops-cicd@its-artifact-commons.iam.gserviceaccount.com"
+      serviceAccount: "gcp-rke-demo-sa@its-artifact-commons.iam.gserviceaccount.com"
       enableNatIP: true #terraform will need it to SSH into
       remoteExecByNatIP: true
