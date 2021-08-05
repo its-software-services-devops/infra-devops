@@ -4,11 +4,8 @@ resource "google_service_account" "gcp-rke-demo-sa" {
   display_name = "gcp-rke-demo SA"
 }
 
-resource "google_service_account_iam_binding" "gce-for-gcp-rke-demo" {
+resource "google_service_account_iam_member" "gce-for-gcp-rke-demo-iam" {
   service_account_id = google_service_account.gcp-rke-demo-sa.name
   role               = "roles/owner"
-
-  members = [
-      "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
-  ]
+  member             = "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
 }
