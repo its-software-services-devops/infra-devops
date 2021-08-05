@@ -4,8 +4,16 @@ resource "google_service_account" "gcp-rke-demo-sa" {
   display_name = "gcp-rke-demo SA"
 }
 
-resource "google_service_account_iam_member" "gce-for-gcp-rke-demo-iam" {
-  service_account_id = google_service_account.gcp-rke-demo-sa.name
-  role               = "roles/owner"
-  member             = "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
+resource "google_project_iam_policy" "project" {
+  policy_data = data.google_iam_policy.node-gcp-rke-demo.policy_data
+}
+
+data "google_iam_policy" "node-gcp-rke-demo" {
+  binding {
+    role = "roles/owner"
+
+    members = [
+      "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}",
+    ]
+  }
 }
