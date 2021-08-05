@@ -9,5 +9,6 @@ resource "google_service_account_iam_binding" "gce-for-gcp-rke-demo" {
   role               = "roles/owner"
 
   members = [
+      "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
   ]
 }
