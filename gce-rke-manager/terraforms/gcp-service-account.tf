@@ -1,3 +1,8 @@
+locals {
+  project = "its-artifact-commons"
+}
+
+# For GCE Nodes
 resource "google_service_account" "gcp-rke-demo-sa" {
   account_id   = "gcp-rke-demo-sa"
   description = "Service account for gcp-rke-demo"
@@ -5,11 +10,12 @@ resource "google_service_account" "gcp-rke-demo-sa" {
 }
 
 resource "google_project_iam_member" "node-gcp-rke-demo" {
-  project = "its-artifact-commons"
+  project = local.project
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
 }
 
+# For DNS+Storage
 resource "google_service_account" "its-rke-demo-cloud-dns" {
   account_id   = "its-rke-demo-cloud-dns"
   description = "Service account for its-rke-demo-cloud-dns"
@@ -17,7 +23,7 @@ resource "google_service_account" "its-rke-demo-cloud-dns" {
 }
 
 resource "google_project_iam_member" "its-rke-demo-cloud-dns-iam" {
-  project = "its-artifact-commons"
-  role    = "roles/owner"
+  project = local.project
+  role    = "roles/storage.admin,roles/dns.admin"
   member  = "serviceAccount:${google_service_account.its-rke-demo-cloud-dns.email}"
 }
