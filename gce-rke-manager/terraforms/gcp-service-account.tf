@@ -15,15 +15,21 @@ resource "google_project_iam_member" "node-gcp-rke-demo" {
   member  = "serviceAccount:${google_service_account.gcp-rke-demo-sa.email}"
 }
 
-# For DNS+Storage
+# For DNS + Storage
 resource "google_service_account" "its-rke-demo-cloud-dns" {
   account_id   = "its-rke-demo-cloud-dns"
   description = "Service account for its-rke-demo-cloud-dns"
   display_name = "its-rke-demo-cloud-dns SA"
 }
 
-resource "google_project_iam_member" "its-rke-demo-cloud-dns-iam" {
+resource "google_project_iam_member" "its-rke-demo-cloud-dns-admin" {
   project = local.project
-  role    = "roles/storage.admin,roles/dns.admin"
+  role    = "roles/dns.admin"
+  member  = "serviceAccount:${google_service_account.its-rke-demo-cloud-dns.email}"
+}
+
+resource "google_project_iam_member" "its-rke-demo-cloud-storage-admin" {
+  project = local.project
+  role    = "roles/storage.admin"
   member  = "serviceAccount:${google_service_account.its-rke-demo-cloud-dns.email}"
 }
