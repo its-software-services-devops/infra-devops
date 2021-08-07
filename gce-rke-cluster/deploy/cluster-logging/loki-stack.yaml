@@ -25,6 +25,7 @@ loki-stack:
       tag: 7.5.7
 
     grafana.ini:
+      root_url: https://gcp-rke-demo.its-software-services.com
       auth.okta:
         name: Okta
         enabled: true
