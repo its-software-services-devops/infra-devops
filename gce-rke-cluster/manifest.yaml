@@ -98,6 +98,10 @@ infraIasc:
     chartId: helm-grafana-k8s
     toDir: deploy/prometheus
     namespace: monitoring
+    values:
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
 
   - valuesFiles: [deploy/cluster-logging/loki-stack.yaml]
     alias: rendered-loki-stack
@@ -105,6 +109,10 @@ infraIasc:
     toDir: deploy/cluster-logging
     namespace: loki-cluster-logging
     template: loki-cluster-logging
+    values:
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
 
   - valuesFiles: [deploy/loki-syslog/loki-syslog.yaml]
     alias: rendered-loki-syslog
@@ -117,6 +125,9 @@ infraIasc:
       - --set-string promtail.customParams.basicAuthPassword=${SEC.LOKI_AUTH_PASSWORD}
       - --set-string loki-distributed.gateway.basicAuth.username=${SEC.LOKI_AUTH_USER}
       - --set-string loki-distributed.gateway.basicAuth.password=${SEC.LOKI_AUTH_PASSWORD}
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
 
   - valuesFiles: [deploy/external-dns/external-dns.yaml]
     alias: rendered-external-dns
