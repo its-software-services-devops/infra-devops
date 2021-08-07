@@ -30,7 +30,7 @@ loki-stack:
       auth.okta:
         name: Okta
         enabled: true
-        allow_sign_up: false
+        allow_sign_up: true
         client_id: ${OKTA_CLIENT_ID}
         client_secret: ${OKTA_CLIENT_SECRET}
         scopes: openid profile email groups
