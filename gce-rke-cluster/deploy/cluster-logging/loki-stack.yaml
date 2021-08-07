@@ -17,8 +17,24 @@ loki-stack:
 
   grafana:
     envRenderSecret:
-      LDAP_ADMIN_USER: "will-change"
-      LDAP_ADMIN_PASSWORD: "will-change"
+      OKTA_CLIENT_ID: "will-change"
+      OKTA_CLIENT_SECRET: "will-change"
+      OKTA_TENANT_ID: "will-change"
 
     image:
       tag: 7.5.7
+
+    grafana.ini:
+      auth.okta:
+        name: Okta
+        enabled: true
+        allow_sign_up: false
+        client_id: ${OKTA_CLIENT_ID}
+        client_secret: ${OKTA_CLIENT_SECRET}
+        scopes: openid profile email groups
+        auth_url: https://${OKTA_TENANT_ID}.okta.com/oauth2/v1/authorize
+        token_url: https://${OKTA_TENANT_ID}.okta.com/oauth2/v1/token
+        api_url: https://${OKTA_TENANT_ID}.okta.com/oauth2/v1/userinfo
+        allowed_domains:
+        allowed_groups: developer
+        role_attribute_path:

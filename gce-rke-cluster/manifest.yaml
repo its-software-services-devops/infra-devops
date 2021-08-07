@@ -105,6 +105,10 @@ infraIasc:
     toDir: deploy/cluster-logging
     namespace: loki-cluster-logging
     template: loki-cluster-logging
+    values:
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string loki-stack.grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
 
   - valuesFiles: [deploy/loki-syslog/loki-syslog.yaml]
     alias: rendered-loki-syslog
