@@ -5,7 +5,7 @@ resource "google_service_account" "etda-logs-monitoring-sa" {
 
 resource "google_container_cluster" "etda-logs-monitoring" {
   name     = "etda-logs-monitoring"
-  location = "asia-southeast1"
+  location = "us-central1"
 
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
@@ -16,7 +16,7 @@ resource "google_container_cluster" "etda-logs-monitoring" {
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "etda-logs-basic-pool"
-  location   = "asia-southeast1"
+  location   = "us-central1"
   cluster    = google_container_cluster.etda-logs-monitoring.name
   node_count = 3
 
