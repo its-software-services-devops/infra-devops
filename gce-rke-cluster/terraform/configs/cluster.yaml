@@ -28,6 +28,6 @@ services:
     extra_args: 
       #These 2 lines below needed for MinIO to create CSR
       cluster-signing-cert-file: "/etc/kubernetes/ssl/kube-ca.pem"
-      cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"    
+      cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"
   kubelet:
     cluster_dns_server: 192.168.200.10
