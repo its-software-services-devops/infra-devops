@@ -1,0 +1,11 @@
+config:
+  project: "its-artifact-commons"
+  stateBucket: "its-terraform-states"
+  bucketPrefix: "its-gke-log-cluster"
+
+providers:
+  google: 
+    source: "hashicorp/google"
+    version: "~> 3.4.0"
+    project: "its-platforms"
+    region: "asia-southeast1"
