@@ -12,6 +12,7 @@ resource "google_container_cluster" "etda-logs-monitoring" {
   # node pool and immediately delete it.
   remove_default_node_pool = true
   initial_node_count       = 1
+  network = "team-a-vpc-network"
 }
 
 resource "google_container_node_pool" "etda-logs-basic-pool" {
