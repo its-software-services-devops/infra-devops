@@ -17,7 +17,7 @@ resource "google_container_cluster" "etda-logs-monitoring" {
   private_cluster_config {
     enable_private_nodes = true
     enable_private_endpoint = false
-    master_ipv4_cidr_block = "192.168.1.1/28"
+    master_ipv4_cidr_block = "192.168.1.0/28"
   }
 }
 
