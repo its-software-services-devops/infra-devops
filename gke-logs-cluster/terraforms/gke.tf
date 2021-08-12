@@ -18,7 +18,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "etda-logs-basic-pool"
   location   = "us-central1"
   cluster    = google_container_cluster.etda-logs-monitoring.name
-  node_count = 3
+  node_count = 2
 
   node_config {
     preemptible  = true
