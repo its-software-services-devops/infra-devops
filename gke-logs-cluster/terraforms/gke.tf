@@ -13,6 +13,10 @@ resource "google_container_cluster" "etda-logs-monitoring" {
   remove_default_node_pool = true
   initial_node_count       = 1
   network = "team-a-vpc-network"
+
+  private_cluster_config {
+    enable_private_nodes = true
+  }
 }
 
 resource "google_container_node_pool" "etda-logs-basic-pool" {
