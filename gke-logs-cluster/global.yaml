@@ -7,5 +7,5 @@ providers:
   google: 
     source: "hashicorp/google"
     version: "~> 3.4.0"
-    project: "its-platforms"
+    project: "its-artifact-commons"
     region: "asia-southeast1"
