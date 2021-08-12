@@ -14,6 +14,15 @@ resource "google_container_cluster" "etda-logs-monitoring" {
   initial_node_count       = 1
   network = "team-a-vpc-network"
 
+  master_authorized_network_config = {
+    cidr_blocks = [
+      {
+        display_name = "office",
+        cidr_block = "100.110.120.130/32"
+      }
+    ]
+  }
+
   private_cluster_config {
     enable_private_nodes = true
     enable_private_endpoint = false
