@@ -18,7 +18,7 @@ resource "google_container_node_pool" "etda-logs-basic-pool" {
   name       = "etda-logs-basic-pool"
   location   = "asia-southeast1"
   cluster    = google_container_cluster.etda-logs-monitoring.name
-  node_count = 2
+  node_count = 1
 
   node_config {
     preemptible  = true
