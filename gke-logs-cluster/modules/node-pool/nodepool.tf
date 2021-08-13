@@ -49,6 +49,7 @@ resource "google_container_node_pool" "node_pool" {
   location           = var.region
   version            = var.kubernetes_version
   initial_node_count = var.initial_node_count
+  node_count         = var.node_count
 
   autoscaling {
     min_node_count = var.min_node_count

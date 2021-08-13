@@ -15,6 +15,11 @@ variable "initial_node_count" {
   default     = "1"
 }
 
+variable "node_count" {
+  description = "Node count for the pool, per availability zone. Changing this will force recreation of the resource."
+  default     = "1"
+}
+
 variable "min_node_count" {
   description = "Minimum number of nodes for autoscaling, per availability zone."
 }

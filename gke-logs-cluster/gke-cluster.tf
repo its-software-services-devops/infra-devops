@@ -54,6 +54,7 @@ module "etda-logs-basic-pool" {
   region           = module.etda-logs-cluster.region
   gke_cluster_name = module.etda-logs-cluster.name
   machine_type     = "n1-standard-2"
+  node_count       = "2"
   min_node_count   = "2"
   max_node_count   = "2"
   service_account_email = google_service_account.etda-logs-monitoring-sa.email
