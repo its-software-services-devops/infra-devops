@@ -84,7 +84,7 @@ resource "google_container_node_pool" "node_pool" {
   }
 
   lifecycle {
-    create_before_destroy = true
+    #create_before_destroy = true
     ignore_changes = [ node_config[0].taint ]
   }
 }
