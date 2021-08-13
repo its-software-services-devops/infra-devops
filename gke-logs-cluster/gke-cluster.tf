@@ -61,11 +61,11 @@ module "etda-logs-basic-pool" {
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
 }
-
-module "etda-logs-usa-pool" {
+/*
+module "etda-logs-premium-pool" {
   source = "./modules/node-pool"
 
-  name             = "etda-logs-usa-pool"
+  name             = "etda-logs-premium-pool"
   region           = "us-west1"
   gke_cluster_name = module.etda-logs-cluster.name
   machine_type     = "n1-standard-2"
@@ -76,3 +76,4 @@ module "etda-logs-usa-pool" {
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
 }
+*/
