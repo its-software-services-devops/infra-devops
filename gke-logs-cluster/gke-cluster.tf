@@ -46,7 +46,7 @@ module "etda-logs-cluster" {
 }
 
 #### Pools ####
-
+/*
 module "etda-logs-basic-pool" {
   source = "./modules/node-pool"
 
@@ -62,7 +62,7 @@ module "etda-logs-basic-pool" {
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
 }
-
+*/
 module "etda-logs-premium-pool" {
   source = "./modules/node-pool"
 
