@@ -48,7 +48,7 @@ resource "google_container_node_pool" "node_pool" {
   cluster            = var.gke_cluster_name
   location           = var.region
   version            = var.kubernetes_version
-  initial_node_count = var.initial_node_count
+  #initial_node_count = var.initial_node_count
   node_count         = var.node_count
 
   autoscaling {
@@ -84,7 +84,7 @@ resource "google_container_node_pool" "node_pool" {
     auto_upgrade = var.auto_upgrade
   }
 
-  lifecycle {    
+  lifecycle {
     #create_before_destroy = true
     ignore_changes = [ node_config, node_count ]
   }
