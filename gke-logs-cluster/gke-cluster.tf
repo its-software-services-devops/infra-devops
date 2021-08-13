@@ -62,7 +62,7 @@ module "etda-logs-basic-pool" {
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
 }
-/*
+
 module "etda-logs-premium-pool" {
   source = "./modules/node-pool"
 
@@ -71,10 +71,10 @@ module "etda-logs-premium-pool" {
   gke_cluster_name = module.etda-logs-cluster.name
   machine_type     = "n1-standard-2"
   min_node_count   = "1"
-  max_node_count   = "1"
+  max_node_count   = "2"
+  node_count       = "1"
   service_account_email = google_service_account.etda-logs-monitoring-sa.email
 
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
 }
-*/
