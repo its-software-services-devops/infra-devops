@@ -1,6 +1,6 @@
 locals {
   project = "its-artifact-commons"
-  region = "asia-southeast2"
+  region = "us-west1"
 
   cluster_name = "etda-logs-cluster"
   network_name = "team-a-vpc-network"
