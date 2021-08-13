@@ -83,8 +83,8 @@ resource "google_container_node_pool" "node_pool" {
     auto_upgrade = var.auto_upgrade
   }
 
-  lifecycle {
+  lifecycle {    
     #create_before_destroy = true
-    ignore_changes = [ node_config[0].taint ]
+    ignore_changes = [ node_config ]
   }
 }
