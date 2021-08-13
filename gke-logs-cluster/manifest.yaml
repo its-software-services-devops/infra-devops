@@ -1,18 +1,15 @@
 config:
-  defaultChartId: helm-terraform-gcp
+  defaultChartId: dummy
 
 vars: {}
 
 charts:
   helm-terraform-gcp:
-    chartUrl: https://its-software-services-devops.github.io/helm-terraform-gcp/
+    chartUrl: https://dummy.not.used/
     version: 1.1.7
 
-copy:
-  - from: terraforms/*.tf
-    toDir: ""
+copy: []
+#  - from: terraforms/*.tf
+#    toDir: ""
 
-infraIasc:
-  - valuesFiles: [global.yaml]
-    transformer: yaml2tf
-    alias: rendered-global
+infraIasc: []
