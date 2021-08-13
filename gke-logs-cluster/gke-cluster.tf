@@ -65,8 +65,8 @@ module "etda-logs-basic-pool" {
 module "etda-logs-usa-pool" {
   source = "./modules/node-pool"
 
-  name             = "etda-logs-basic-pool"
-  region           = "us-west2"
+  name             = "etda-logs-usa-pool"
+  region           = "us-west1"
   gke_cluster_name = module.etda-logs-cluster.name
   machine_type     = "n1-standard-2"
   min_node_count   = "1"
