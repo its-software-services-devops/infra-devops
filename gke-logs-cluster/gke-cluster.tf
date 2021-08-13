@@ -2,7 +2,7 @@ locals {
   project = "its-artifact-commons"
   region = "us-west1"
 
-  cluster_name = "etda-logs-cluster"
+  cluster_name = "etda-logs-cluster-1"
   network_name = "team-a-vpc-network"
   kubernetes_version = "1.20.9-gke.700"
   nodes_subnetwork_name = "team-a-vpc-network"
@@ -55,7 +55,7 @@ module "etda-logs-basic-pool" {
   gke_cluster_name = module.etda-logs-cluster.name
   machine_type     = "n1-standard-2"
   node_count       = "2"
-  min_node_count   = "2"
+  min_node_count   = "1"
   max_node_count   = "2"
   service_account_email = google_service_account.etda-logs-monitoring-sa.email
 
