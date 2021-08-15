@@ -11,7 +11,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 75GB
+              storage: 75Gi
 
 ##### Excluded portions #####
 kubeProxy:
