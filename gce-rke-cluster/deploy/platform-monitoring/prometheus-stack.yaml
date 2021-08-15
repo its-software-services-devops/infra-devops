@@ -2,7 +2,7 @@
 prometheus:
   prometheusSpec:
     retention: 14d
-    retentionSize: 70Gi
+    retentionSize: 70GB
     storageSpec:
     ## Using PersistentVolumeClaim
     ##
@@ -11,7 +11,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 75Gi
+              storage: 75GB
 
 ##### Excluded portions #####
 kubeProxy:
