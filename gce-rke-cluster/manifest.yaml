@@ -133,11 +133,11 @@ infraIasc:
       - --set-string grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
       - --set-string grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
 
-  - valuesFiles: [deploy/external-dns/external-dns.yaml]
-    alias: rendered-external-dns
-    chartId: external-dns
-    toDir: deploy/external-dns
-    namespace: external-dns
+#  - valuesFiles: [deploy/external-dns/external-dns.yaml]
+#    alias: rendered-external-dns
+#    chartId: external-dns
+#    toDir: deploy/external-dns
+#    namespace: external-dns
 
   - valuesFiles: [deploy/vector-loki/vector-loki.yaml]
     alias: rendered-vector-loki
