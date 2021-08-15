@@ -1,5 +1,17 @@
 ---
-#prometheus:
+prometheus:
+  prometheusSpec:
+    retention: 14d
+    retentionSize: 70Gi
+    storageSpec:
+    ## Using PersistentVolumeClaim
+    ##
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 75Gi
 
 ##### Excluded portions #####
 kubeProxy:
