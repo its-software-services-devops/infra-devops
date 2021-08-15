@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-platform-ing
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  tls:
+    - hosts:
+      - prometheus-platform.gcp-rke-demo.its-software-services.com
+      secretName: prometheus-platform-cert
+  rules:
+    - host: prometheus-platform.gcp-rke-demo.its-software-services.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-platform
+                port:
+                  number: 9090
