@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus-platform
+spec:
+  serviceAccountName: prometheus
+  enableAdminAPI: false
+  replicas: 2
+  storage:
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 70Gi
+  resources:
+    requests:
+      memory: 400Mi
