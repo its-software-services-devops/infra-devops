@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      strimzi.io/kind: cluster-operator
+      app.kubernetes.io/name: kafka-exporter
   namespaceSelector:
     matchNames:
       - kafka-log-broker
