@@ -19,3 +19,4 @@ cd deploy/loki-syslog; ./deploy-loki-syslog.bash; cd ${CWD}
 cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
 cd deploy/kafka-log-broker; ./deploy-kafka-cluster.bash; cd ${CWD}
 cd deploy/vector-loki; ./deploy-vector-loki.bash; cd ${CWD}
+cd deploy/platform-monitoring; ./deploy-platform-monitor.bash; cd ${CWD}
