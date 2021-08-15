@@ -11,7 +11,7 @@ export KUBECONFIG=$(pwd)/${CFG}
 
 CWD=$(pwd)
 
-cd deploy/01_basics; ./deploy-basics.bash; cd ${CWD}
+cd deploy/01-basics; ./deploy-basics.bash; cd ${CWD}
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
 cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
 cd deploy/cluster-logging; ./deploy-cluster-logging.bash; cd ${CWD}
