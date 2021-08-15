@@ -4,6 +4,12 @@ metadata:
   name: kafka-log-broker
 spec:
   kafka:
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics
+          key: kafka-metrics-config.yml
     version: 2.8.0
     replicas: 3
     listeners:

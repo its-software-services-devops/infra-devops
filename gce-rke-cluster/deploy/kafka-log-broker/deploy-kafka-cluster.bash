@@ -7,6 +7,8 @@ echo "#### Deploying kafka broker to [${NS}] ####"
 
 kubectl create ns ${NS}
 
+kubectl apply -f kafka-metrics-exporter.yaml -n ${NS}
+
 kubectl apply -f kafka-cluster.yaml -n ${NS}
 kubectl apply -f kafka-syslog-topic.yaml -n ${NS}
 kubectl apply -f kafka-user.yaml -n ${NS}
