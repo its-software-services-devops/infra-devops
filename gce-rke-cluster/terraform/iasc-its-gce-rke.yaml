@@ -21,17 +21,17 @@ gceRke:
       mode: "register" # register, unregister, remove
       role: '["controlplane", "etcd"]'
 
-    - host: "its-rancher-master-02"
-      profile: "master"
-      zone: "asia-southeast1-b"
-      mode: "register" # register, unregister, remove
-      role: '["controlplane", "etcd"]'
+#    - host: "its-rancher-master-02"
+#      profile: "master"
+#      zone: "asia-southeast1-b"
+#      mode: "register" # register, unregister, remove
+#      role: '["controlplane", "etcd"]'
 
-    - host: "its-rancher-master-03"
-      profile: "master"
-      zone: "asia-southeast1-c"
-      mode: "register" # register, unregister, remove
-      role: '["controlplane", "etcd"]'
+#    - host: "its-rancher-master-03"
+#      profile: "master"
+#      zone: "asia-southeast1-c"
+#      mode: "register" # register, unregister, remove
+#      role: '["controlplane", "etcd"]'
 
 
     - host: "its-rancher-worker-01"
@@ -52,11 +52,11 @@ gceRke:
       mode: "register"
       role: '["worker"]'
 
-    - host: "its-rancher-worker-04"
-      profile: "worker"
-      zone: "asia-southeast1-a"
-      mode: "register"
-      role: '["worker"]'
+#    - host: "its-rancher-worker-04"
+#      profile: "worker"
+#      zone: "asia-southeast1-a"
+#      mode: "register"
+#      role: '["worker"]'
 
   profiles:
     master:
