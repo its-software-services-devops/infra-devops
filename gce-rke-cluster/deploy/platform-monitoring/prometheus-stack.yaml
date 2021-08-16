@@ -4,8 +4,6 @@ prometheus:
     retention: 14d
     retentionSize: 70GB
     storageSpec:
-    ## Using PersistentVolumeClaim
-    ##
       volumeClaimTemplate:
         spec:
           accessModes: ["ReadWriteOnce"]
