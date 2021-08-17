@@ -11,3 +11,4 @@ kubectl apply -f prometheus-ing.yaml -n ${NS}
 
 kubectl apply -f kafka-pod-monitor.yaml -n ${NS}
 kubectl apply -f certmanager-service-monitor.yaml -n ${NS}
+kubectl apply -f vector-service-monitor.yaml -n ${NS}
