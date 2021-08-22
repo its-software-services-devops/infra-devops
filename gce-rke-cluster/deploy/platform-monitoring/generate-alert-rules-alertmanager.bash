@@ -15,7 +15,9 @@ git clone https://github.com/prometheus/${ALERT_MANAGER_MIXIN}.git
 
 cat << 'EOF' > ${ALERT_MANAGER_MIXIN}/doc/alertmanager-mixin/config.libsonnet
 {
-  alertmanagerSelector: 'job="kube-prometheus-stack-alertmanager"',
+  _config+:: {
+    alertmanagerSelector: 'job="kube-prometheus-stack-alertmanager"',
+  }
 }
 EOF
 
