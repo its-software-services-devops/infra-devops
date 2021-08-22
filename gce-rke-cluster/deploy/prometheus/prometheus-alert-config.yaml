@@ -6,7 +6,7 @@ alertmanager:
     config:
       alertNoti:
         slackUrl: ''
-        channel: '#rke-demo'
+        channel: '#etda-logs-monitor'
         discardRules:
           - alertname: 'CPUThrottlingHigh'
             namespace: 'monitoring'            
