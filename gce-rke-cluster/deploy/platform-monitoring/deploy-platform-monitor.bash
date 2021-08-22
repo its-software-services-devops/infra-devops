@@ -27,3 +27,7 @@ LOKI_RULES2=generated-loki-record.yaml
 ./generate-alert-rules-loki.bash ${LOKI_RULES1} ${LOKI_RULES2}
 kubectl apply -f ${LOKI_RULES1} -n ${NS}
 kubectl apply -f ${LOKI_RULES2} -n ${NS}
+
+KAFKA_RULES=generated-kafka-rules.yaml
+./generate-alert-rules-kafka.bash ${KAFKA_RULES}
+kubectl apply -f ${KAFKA_RULES} -n ${NS}
