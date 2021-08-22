@@ -23,7 +23,7 @@ curl ${ALERT_URL} > downloaded-${ALERT_NAME}.yaml
 sed -i -e 's/^/  /' downloaded-${ALERT_NAME}.yaml
 
 curl ${RULE_URL} > downloaded-${RULE_NAME}.yaml
-sed -i -e 's/^/  /'downloaded-${RULE_NAME}.yaml
+sed -i -e 's/^/  /' downloaded-${RULE_NAME}.yaml
 
 ALERT_CONTENT=$(cat downloaded-${ALERT_NAME}.yaml)
 RULE_CONTENT=$(cat downloaded-${RULE_NAME}.yaml)
