@@ -2,18 +2,17 @@ apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: alertmanager-config
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack  
 spec:
   route:
     receiver: 'slack-notifications'
     groupBy: [ 'alertname' ]
     routes:
-      - receiver: 'discard'
-        match_re:
-          alertname: CPUThrottlingHigh
-          namespace: monitoring
-      - receiver: 'discard'
-        match_re:
-          alertname: KubeControllerManagerDown|KubeSchedulerDown
+      - receiver: 'slack-notifications'
+        match:
+          alertname: Watchdog
   receivers:
     - name: 'discard'
     - name: 'slack-notifications'
