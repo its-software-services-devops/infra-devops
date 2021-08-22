@@ -16,7 +16,15 @@ git clone https://github.com/prometheus/${ALERT_MANAGER_MIXIN}.git
 cat << 'EOF' > ${ALERT_MANAGER_MIXIN}/doc/alertmanager-mixin/config.libsonnet
 {
   _config+:: {
+    local c = self,
     alertmanagerSelector: 'job="kube-prometheus-stack-alertmanager"',
+    alertmanagerClusterLabels: 'job',
+    alertmanagerNameLabels: 'instance',
+    alertmanagerName: std.join('/', ['{{$labels.%s}}' % [label] for label in std.split(c.alertmanagerNameLabels, ',')]),
+    alertmanagerClusterName: '{{$labels.job}}',
+    alertmanagerCriticalIntegrationsRegEx: @'.*',
+    dashboardNamePrefix: 'Alertmanager / ',
+    dashboardTags: ['alertmanager-mixin'],    
   }
 }
 EOF
