@@ -3,6 +3,7 @@
 NS=platform-monitoring
 CERT_MANAGER_MIXIN=cert-manager-mixin
 
+rm -rf ${CERT_MANAGER_MIXIN}
 git clone https://gitlab.com/uneeq-oss/${CERT_MANAGER_MIXIN}.git
 
 docker run -v $(pwd)/${CERT_MANAGER_MIXIN}/:/data/ \
