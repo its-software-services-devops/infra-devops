@@ -1,42 +1,53 @@
 #!/bin/bash
 
-OUTPUT_FILE=$1
-LOKI_MIXIN=loki
-LOKI_MIXIN_FILE=${LOKI_MIXIN}-mixin
-NAME=loki-alert-rules
+NAME1=$1
+NAME2=$2
 
-if [ -z "${OUTPUT_FILE}" ]
+if [ -z "${NAME1}" ]
 then
-  OUTPUT_FILE=generated-loki-rules.yaml
+  NAME1=generated-loki-alert.yaml
 fi
 
-rm -rf ${LOKI_MIXIN}
-git clone https://github.com/grafana/${LOKI_MIXIN}.git
+if [ -z "${NAME2}" ]
+then
+  NAME2=generated-loki-rule.yaml
+fi
 
-cat << 'EOF' > ${LOKI_MIXIN}/production/loki-mixin/config.libsonnet
-{
-  _config+:: {
-    tags: ['loki'],
-    per_instance_label: 'pod',
-    per_node_label: 'instance',  
-  }
-}
-EOF
+ALERT_URL=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/alerts.yaml
+RULE_URL=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/rules.yaml
 
-docker run -v $(pwd)/${LOKI_MIXIN}/production/loki-mixin/:/data/ \
-bitnami/jsonnet:latest > ${LOKI_MIXIN_FILE}.yaml
+ALERT_NAME=loki-alert
+RULE_NAME=loki-rule
 
-sed -i -e 's/^/  /' ${LOKI_MIXIN_FILE}.yaml
-CONTENT=$(cat ${LOKI_MIXIN_FILE}.yaml)
+curl ${ALERT_URL} > downloaded-${ALERT_NAME}.yaml
+sed -i -e 's/^/  /' ${ALERT_NAME}.yaml
 
-cat << EOF > ${OUTPUT_FILE}
+curl ${RULE_URL} > downloaded-${RULE_NAME}.yaml
+sed -i -e 's/^/  /' ${RULE_NAME}.yaml
+
+ALERT_CONTENT=$(cat ${downloaded-${ALERT_NAME}.yaml})
+RULE_CONTENT=$(cat ${downloaded-${RULE_NAME}.yaml})
+
+cat << EOF > ${NAME1}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: ${NAME}
+  name: ${ALERT_NAME}
   labels:
     app: kube-prometheus-stack
     release: kube-prometheus-stack
 spec:
-${CONTENT}
+${ALERT_CONTENT}
+EOF
+
+cat << EOF > ${NAME2}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: ${RULE_NAME}
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack
+spec:
+${RULE_CONTENT}
 EOF
