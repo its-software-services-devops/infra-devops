@@ -13,6 +13,7 @@ then
   NAME2=generated-loki-rule.yaml
 fi
 
+# Download from the pre-generated ones
 ALERT_URL=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/alerts.yaml
 RULE_URL=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/rules.yaml
 
