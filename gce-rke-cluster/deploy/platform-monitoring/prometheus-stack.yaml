@@ -1,6 +1,11 @@
 ---
 prometheus:
   prometheusSpec:
+    ruleSelector:
+      matchLabels:
+        app: kube-prometheus-stack
+        release: kube-prometheus-stack  
+
     retention: 14d
     retentionSize: 70GB
     storageSpec:
