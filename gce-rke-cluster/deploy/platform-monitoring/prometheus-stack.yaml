@@ -1,4 +1,9 @@
 ---
+defaultRules:
+  create: true
+  rules:
+    alertmanager: true
+    
 prometheus:
   prometheusSpec:
     ruleSelector:

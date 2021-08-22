@@ -2,6 +2,7 @@
 
 OUTPUT_FILE=$1
 CERT_MANAGER_MIXIN=cert-manager-mixin
+NAME=certmanager-alert-rules
 
 if [ -z "${OUTPUT_FILE}" ]
 then
@@ -33,7 +34,7 @@ cat << EOF > ${OUTPUT_FILE}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: certmanager-alert-rules
+  name: ${NAME}
   labels:
     app: kube-prometheus-stack
     release: kube-prometheus-stack  
