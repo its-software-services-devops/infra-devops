@@ -13,10 +13,11 @@ fi
 rm -rf ${ALERT_MANAGER_MIXIN}
 git clone https://github.com/prometheus/${ALERT_MANAGER_MIXIN}.git
 
-# cat << 'EOF' > ${ALERT_MANAGER_MIXIN}/doc/alertmanager-mixin/config.libsonnet
-# {
-# }
-# EOF
+cat << 'EOF' > ${ALERT_MANAGER_MIXIN}/doc/alertmanager-mixin/config.libsonnet
+{
+  alertmanagerSelector: 'job="kube-prometheus-stack-alertmanager"',
+}
+EOF
 
 docker run -v $(pwd)/${ALERT_MANAGER_MIXIN}/doc/alertmanager-mixin/:/data/ \
 bitnami/jsonnet:latest \
