@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: loki-syslog-svc-monitor
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack  
+spec:
+  jobLabel: vector
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: loki-distributed
+      app.kubernetes.io/instance: loki-syslog
+  namespaceSelector:
+    matchNames:
+      - loki-syslog
+  endpoints:
+  - targetPort: 3100
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 30s

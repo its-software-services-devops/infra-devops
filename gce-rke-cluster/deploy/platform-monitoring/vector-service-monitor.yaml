@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vector-svc-monitor
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack  
+spec:
+  jobLabel: vector
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vector-aggregator
+      app.kubernetes.io/instance: vector-aggregator
+  namespaceSelector:
+    matchNames:
+      - vector-loki
+  endpoints:
+  - targetPort: 9090
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 30s

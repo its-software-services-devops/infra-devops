@@ -40,6 +40,10 @@ charts:
     chartUrl: https://packages.timber.io/helm/nightly/
     version:  0.16.0-nightly-2021-07-31
 
+  kube-prometheus-stack:
+    chartUrl: https://prometheus-community.github.io/helm-charts
+    version: 17.2.1
+
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
@@ -143,3 +147,10 @@ infraIasc:
     values:
       - --set-string customConfig.sinks.loki_syslog.auth.user=${SEC.LOKI_AUTH_USER}
       - --set-string customConfig.sinks.loki_syslog.auth.password=${SEC.LOKI_AUTH_PASSWORD}
+
+  - valuesFiles: [deploy/platform-monitoring/prometheus-stack.yaml]
+    alias: rendered-prometheus-stack
+    chartId: kube-prometheus-stack
+    toDir: deploy/platform-monitoring
+    namespace: platform-monitoring
+    values: []

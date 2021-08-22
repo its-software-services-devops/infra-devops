@@ -11,7 +11,7 @@ export KUBECONFIG=$(pwd)/${CFG}
 
 CWD=$(pwd)
 
-cd deploy/01_basics; ./deploy-basics.bash; cd ${CWD}
+cd deploy/01-basics; ./deploy-basics.bash; cd ${CWD}
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
 cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
 cd deploy/cluster-logging; ./deploy-cluster-logging.bash; cd ${CWD}
@@ -19,3 +19,4 @@ cd deploy/loki-syslog; ./deploy-loki-syslog.bash; cd ${CWD}
 cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
 cd deploy/kafka-log-broker; ./deploy-kafka-cluster.bash; cd ${CWD}
 cd deploy/vector-loki; ./deploy-vector-loki.bash; cd ${CWD}
+cd deploy/platform-monitoring; ./deploy-platform-monitor.bash; cd ${CWD}
