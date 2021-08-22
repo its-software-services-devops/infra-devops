@@ -1,13 +1,8 @@
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
-  name: config-example
-  labels:
-    alertmanagerConfig: example
+  name: alertmanager-config
 spec:
-  global:
-    resolve_timeout: 5m
-    slack_api_url: '__SLACK_URL__'
   route:
     receiver: 'slack-notifications'
     group_by: [ 'alertname' ]
@@ -19,14 +14,14 @@ spec:
       - receiver: 'discard'
         match_re:
           alertname: KubeControllerManagerDown|KubeSchedulerDown
-
   receivers:
     - name: 'discard'
     - name: 'slack-notifications'
-      slack_configs:
+      slackConfigs:
       - channel: '#etda-logs-monitor'
-        send_resolved: true
-        icon_url: https://avatars3.githubusercontent.com/u/3380462
+        apiURL: '__SLACK_URL__'
+        sendResolved: true
+        iconURL: https://avatars3.githubusercontent.com/u/3380462
         title: |-
           [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}
           {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
