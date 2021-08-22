@@ -12,9 +12,9 @@ ALERT_URL=https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/main/
 ALERT_NAME=kafka-alert
 
 curl ${ALERT_URL} > downloaded-${ALERT_NAME}.yaml
-sed -i -e 's/^/  /' downloaded-${ALERT_NAME}.yaml
 
-ALERT_CONTENT=$(cat downloaded-${ALERT_NAME}.yaml)
+# Get only lines start from line number 9
+ALERT_CONTENT=$(sed 1,8d downloaded-${ALERT_NAME}.yaml)
 
 cat << EOF > ${NAME1}
 apiVersion: monitoring.coreos.com/v1
