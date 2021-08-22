@@ -1,8 +1,12 @@
 #!/bin/bash
 
-FILENAME=$1
-NS=platform-monitoring
+OUTPUT_FILE=$1
 CERT_MANAGER_MIXIN=cert-manager-mixin
+
+if [ -z "${OUTPUT_FILE}" ]
+then
+  OUTPUT_FILE=generated-certmanager-rules.yaml
+fi
 
 rm -rf ${CERT_MANAGER_MIXIN}
 git clone https://gitlab.com/uneeq-oss/${CERT_MANAGER_MIXIN}.git
@@ -25,7 +29,7 @@ bitnami/jsonnet:latest \
 sed -i -e 's/^/  /' ${CERT_MANAGER_MIXIN}.yaml
 CONTENT=$(cat ${CERT_MANAGER_MIXIN}.yaml)
 
-cat << "EOF" > ${FILENAME}
+cat << EOF > ${OUTPUT_FILE}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
