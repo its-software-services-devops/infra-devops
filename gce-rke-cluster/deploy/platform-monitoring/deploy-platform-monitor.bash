@@ -14,4 +14,6 @@ kubectl apply -f certmanager-service-monitor.yaml -n ${NS}
 kubectl apply -f vector-service-monitor.yaml -n ${NS}
 kubectl apply -f loki-syslog-service-monitor.yaml -n ${NS}
 
-kubectl apply -f certmanager-alert-rules.yaml -n ${NS}
+CERTMANAGER_RULES=generated-certmanager-rules.yaml
+./generate-alert-rules.bash ${CERTMANAGER_RULES}
+kubectl apply -f ${CERTMANAGER_RULES} -n ${NS}

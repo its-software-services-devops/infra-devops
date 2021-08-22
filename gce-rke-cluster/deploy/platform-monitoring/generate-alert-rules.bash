@@ -1,5 +1,6 @@
 #!/bin/bash
 
+FILENAME=$1
 NS=platform-monitoring
 CERT_MANAGER_MIXIN=cert-manager-mixin
 
@@ -23,3 +24,15 @@ bitnami/jsonnet:latest \
 
 sed -i -e 's/^/  /' ${CERT_MANAGER_MIXIN}.yaml
 CONTENT=$(cat ${CERT_MANAGER_MIXIN}.yaml)
+
+cat << "EOF" > ${FILENAME}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: certmanager-alert-rules
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack  
+spec:
+${CONTENT}
+EOF
