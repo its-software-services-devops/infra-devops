@@ -4,7 +4,7 @@ defaultRules:
   rules:
     alertmanager: true
 
-alertmanager:  
+alertmanager:
   alertmanagerSpec:
     useExistingSecret: true
     alertmanagerConfigSelector:

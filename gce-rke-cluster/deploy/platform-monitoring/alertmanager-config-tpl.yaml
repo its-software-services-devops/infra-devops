@@ -9,12 +9,7 @@ spec:
   route:
     receiver: 'slack-notifications'
     groupBy: [ 'alertname' ]
-    routes:
-      - receiver: 'slack-notifications'
-        match:
-          alertname: Watchdog
   receivers:
-    - name: 'discard'
     - name: 'slack-notifications'
       slackConfigs:
       - channel: '#etda-logs-monitor'
