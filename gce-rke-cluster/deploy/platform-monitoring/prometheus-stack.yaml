@@ -4,9 +4,9 @@ defaultRules:
   rules:
     alertmanager: true
 
-alertmanager:
-  useExistingSecret: true
+alertmanager:  
   alertmanagerSpec:
+    useExistingSecret: true
     alertmanagerConfigSelector:
       matchLabels:
         app: kube-prometheus-stack
