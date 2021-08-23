@@ -9,7 +9,7 @@ fi
 
 export $(cat secrets.txt | sed 's/#.*//g' | xargs)
 
-cp alertmanager-config-tpl.yaml ${OUTPUT_FILE}
+cp alertmanager-config-secret.yaml ${OUTPUT_FILE}
 
 URL_KEY=$(echo -n ${ALERT_NOTI_SLACK_URL} | base64 -w0)
 sed -i "s/__SLACK_URL__/${URL_KEY}/g" ${OUTPUT_FILE}
