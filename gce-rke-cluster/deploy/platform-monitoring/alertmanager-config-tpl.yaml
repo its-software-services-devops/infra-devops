@@ -11,11 +11,17 @@ spec:
     groupBy: [ 'alertname' ]
     routes:
       - receiver: 'slack-notifications'
-        continue: false
+        continue: ture
         matchers:
           - name: alertname
             value: .+
             regex: true
+      - receiver: 'slack-notifications'
+        continue: ture
+        matchers:
+          - name: alertname
+            value: NoMessageForTooLong
+            regex: true            
   receivers:
     - name: 'slack-notifications'
       slackConfigs:
