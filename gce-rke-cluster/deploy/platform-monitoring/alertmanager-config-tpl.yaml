@@ -11,7 +11,11 @@ spec:
     groupBy: [ 'alertname' ]
     routes:
       - receiver: 'slack-notifications'
-        continue: true
+        continue: false
+        matchers:
+          name: alertname
+          value: .+
+          regex: true
   receivers:
     - name: 'slack-notifications'
       slackConfigs:
