@@ -9,6 +9,9 @@ spec:
   route:
     receiver: 'slack-notifications'
     groupBy: [ 'alertname' ]
+    routes:
+      - receiver: 'slack-notifications'
+        continue: true
   receivers:
     - name: 'slack-notifications'
       slackConfigs:
