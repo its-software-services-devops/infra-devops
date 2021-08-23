@@ -5,6 +5,7 @@ defaultRules:
     alertmanager: true
 
 alertmanager:
+  useExistingSecret: true
   alertmanagerSpec:
     alertmanagerConfigSelector:
       matchLabels:
