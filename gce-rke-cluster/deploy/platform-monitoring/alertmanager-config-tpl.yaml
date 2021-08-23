@@ -13,9 +13,9 @@ spec:
       - receiver: 'slack-notifications'
         continue: false
         matchers:
-          name: alertname
-          value: NoMessageForTooLong
-          regex: true
+          - name: alertname
+            value: .+
+            regex: true
   receivers:
     - name: 'slack-notifications'
       slackConfigs:
