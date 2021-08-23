@@ -20,7 +20,10 @@ cat << EOF > ${OUTPUT_FILE}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: alertmanager-platform-monitoring-alertmanager
+  name: alertmanager-kube-prometheus-stack-alertmanager
+  labels:
+    app: kube-prometheus-stack-alertmanager
+    release: "kube-prometheus-stack"  
 data:
   alertmanager.yaml: ${CFG_FILE}
 EOF
