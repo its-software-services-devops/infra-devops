@@ -5,7 +5,13 @@ route:
   receiver: 'slack-notifications'
   group_by: [ 'alertname' ]
   routes:
+    - receiver: 'discard'
+      continue: false
+      match_re:
+        alertname: ^.+ContainersDown$ #This alert requires metric that available on OpenShift. 
+
     - receiver: 'slack-notifications'
+      continue: true
       match_re:
         alertname: .+
 receivers:
