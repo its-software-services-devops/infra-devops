@@ -39,7 +39,7 @@ receivers:
         {{ if .Annotations.description }}*Description:* {{ .Annotations.description }}{{ end }}
         {{ if .Annotations.message }}*Message:* {{ .Annotations.message }}{{ end }}
         {{ if .Annotations.summary }}*Summary:* {{ .Annotations.summary }}{{ end }}
-        *Runbook URL:* {{ .Annotations.runbook_url }}
+        {{ if .Annotations.runbook_url }}*Runbook URL:* {{ .Annotations.runbook_url }}{{ end }}
         *Details:*
           {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
           {{ end }}
