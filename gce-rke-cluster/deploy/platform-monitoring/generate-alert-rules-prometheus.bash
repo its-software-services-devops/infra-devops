@@ -16,7 +16,7 @@ git clone https://github.com/prometheus/${PROMETHEUS_MIXIN}.git
 cat << 'EOF' > ${PROMETHEUS_MIXIN}/documentation/prometheus-mixin/config.libsonnet
 {
   _config+:: {
-    prometheusSelector: 'job="prometheus"',
+    prometheusSelector: 'job="kube-prometheus-stack-prometheus"',
     prometheusHAGroupLabels: '',
     prometheusName: '{{$labels.instance}}',
     prometheusHAGroupName: '{{$labels.job}}',
@@ -42,4 +42,15 @@ metadata:
     release: kube-prometheus-stack
 spec:
 ${CONTENT}
+    - "alert": "Watchdog"
+      "annotations":
+        description: |
+          This is an alert meant to ensure that the entire alerting pipeline is functional. This alert is always firing, therefore it should always be firing in Alertmanager
+          and always fire against a receiver. There are integrations with various notification
+          mechanisms that send a notification when this alert is not firing. For example the
+          "DeadMansSnitch" integration in PagerDuty.
+        summary: An alert that should always be firing to certify that Alertmanager is working properly.
+      "expr": vector(1)
+      "labels":
+        "severity": "none"
 EOF

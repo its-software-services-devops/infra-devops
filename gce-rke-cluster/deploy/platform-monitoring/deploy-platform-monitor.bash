@@ -22,7 +22,7 @@ ALERTMANAGER_RULES=generated-alertmanager-rules.yaml
 ./generate-alert-rules-alertmanager.bash ${ALERTMANAGER_RULES}
 kubectl apply -f ${ALERTMANAGER_RULES} -n ${NS}
 
-PROMETHEUS_RULES=generated-alertmanager-rules.yaml
+PROMETHEUS_RULES=generated-prometheus-rules.yaml
 ./generate-alert-rules-prometheus.bash ${PROMETHEUS_RULES}
 kubectl apply -f ${PROMETHEUS_RULES} -n ${NS}
 
