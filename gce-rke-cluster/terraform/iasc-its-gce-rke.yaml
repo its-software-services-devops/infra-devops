@@ -58,6 +58,12 @@ gceRke:
       mode: "register"
       role: '["worker"]'
 
+    - host: "its-rancher-worker-05"
+      profile: "worker"
+      zone: "asia-southeast1-b"
+      mode: "register"
+      role: '["worker"]'
+
 #    - host: "its-rancher-worker-04"
 #      profile: "worker"
 #      zone: "asia-southeast1-a"
