@@ -8,7 +8,7 @@ route:
     - receiver: 'discard'
       continue: false
       match_re:
-        alertname: ^.+ContainersDown$ #This alert requires metric that available on OpenShift. 
+        alertname: ^.+ContainersDown$|^.+ContainerDown$ #This alert requires metric that available on OpenShift. 
 
     - receiver: 'slack-notifications'
       continue: true
