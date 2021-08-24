@@ -31,3 +31,8 @@ kubectl apply -f ${LOKI_RULES2} -n ${NS}
 KAFKA_RULES=generated-kafka-rules.yaml
 ./generate-alert-rules-kafka.bash ${KAFKA_RULES}
 kubectl apply -f ${KAFKA_RULES} -n ${NS}
+
+# Put this to the very end after "rendered-prometheus-stack.yaml"
+ALERTMANAGER_CONFIG=generated-alertmanager-config.yaml
+./generate-alertmanager-config.bash ${ALERTMANAGER_CONFIG}
+kubectl apply -f ${ALERTMANAGER_CONFIG} -n ${NS}
