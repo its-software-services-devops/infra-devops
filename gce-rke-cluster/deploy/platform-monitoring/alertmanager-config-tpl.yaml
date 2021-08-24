@@ -10,6 +10,12 @@ route:
       match_re:
         alertname: ^.+ContainersDown$|^.+ContainerDown$ #This alert requires metric that available on OpenShift. 
 
+    - receiver: 'discard'
+      continue: false
+      match_re:
+        alertname: ^NoMessageForTooLong$
+        topic: ^__strimzi.+$
+
     - receiver: 'slack-notifications'
       continue: true
       match_re:
