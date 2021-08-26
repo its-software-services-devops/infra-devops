@@ -6,7 +6,15 @@ envRenderSecret:
   OKTA_CLIENT_SECRET: "will-change"
   OKTA_TENANT_ID: "will-change"
 
-datasources: {}
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus-Platform
+      type: prometheus
+      access: Server
+      url: http://prometheus-platform.platform-monitoring.svc.cluster.local:9090
+
 dashboardProviders: {}
 dashboardsConfigMaps: {}
 
@@ -25,4 +33,4 @@ grafana.ini:
     api_url: https://${OKTA_TENANT_ID}.okta.com/oauth2/v1/userinfo
     allowed_domains:
     allowed_groups: developer
-    role_attribute_path: 'Viewer'
+    role_attribute_path: 'Admin'
