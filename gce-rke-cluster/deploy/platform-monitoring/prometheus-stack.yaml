@@ -39,7 +39,7 @@ kubeEtcd:
   enabled: false
 
 kubeStateMetrics:
-  enabled: false
+  enabled: true
 
 kubeDns:
   enabled: false
