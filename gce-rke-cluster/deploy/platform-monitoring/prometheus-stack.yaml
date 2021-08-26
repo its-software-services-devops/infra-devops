@@ -39,7 +39,7 @@ kubeEtcd:
   enabled: false
 
 kubeStateMetrics:
-  enabled: true
+  enabled: true #We need some metrics to make Grafana dashboard to show correctly
 
 kubeDns:
   enabled: false
