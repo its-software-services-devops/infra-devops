@@ -40,3 +40,8 @@ kubectl apply -f ${KAFKA_RULES} -n ${NS}
 ALERTMANAGER_CONFIG=generated-alertmanager-config.yaml
 ./generate-alertmanager-config.bash ${ALERTMANAGER_CONFIG}
 kubectl apply -f ${ALERTMANAGER_CONFIG} -n ${NS}
+
+
+# Grafana here
+kubectl apply -f rendered-grafana-platform.yaml -n ${NS}
+kubectl apply -f grafana-platform-ing.yaml -n ${NS}
