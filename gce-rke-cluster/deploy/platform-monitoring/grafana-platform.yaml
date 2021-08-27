@@ -40,4 +40,4 @@ grafana.ini:
     api_url: https://${OKTA_TENANT_ID}.okta.com/oauth2/v1/userinfo
     allowed_domains:
     allowed_groups: developer
-    role_attribute_path: 'Admin'
+    role_attribute_path: contains(groups[*], 'admin') && 'Admin' || contains(groups[*], 'developer') && 'Admin' || 'Viewer'
