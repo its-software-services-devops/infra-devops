@@ -16,7 +16,7 @@ datasources:
       url: http://kube-prometheus-stack-prometheus.platform-monitoring.svc.cluster.local:9090
       #skip tls
     - name: Loki-SysLog
-      type: Loki
+      type: loki
       access: Server
       url: http://loki-syslog-query-frontend.loki-syslog.svc.cluster.local:3100
       #skip tls
