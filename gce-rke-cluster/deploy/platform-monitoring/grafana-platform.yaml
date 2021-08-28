@@ -1,6 +1,7 @@
 fullnameOverride: grafana-platform
 image:
-  tag: 7.5.7
+  repository: gcr.io/its-artifact-commons/grafana-loki-syslog
+  tag: v7.5.10-2
 envRenderSecret:
   OKTA_CLIENT_ID: "will-change"
   OKTA_CLIENT_SECRET: "will-change"
