@@ -11,4 +11,5 @@ kubectl apply -f prometheus-ing.yaml
 kubectl apply -f rendered-grafana-k8s.yaml -n ${NS}
 kubectl apply -f grafana-k8s-ing.yaml -n ${NS}
 
+kubectl label ns monitoring --overwrite monitoring=true
 kubectl patch prometheus k8s -n monitoring --type merge --patch "$(cat prometheus-patch.yaml)"

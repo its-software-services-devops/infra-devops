@@ -1,7 +1,4 @@
 spec:
   serviceMonitorNamespaceSelector:
-    matchExpressions:
-    - key: name
-      operator: In
-      values:
-      - monitoring
+    matchLabels:
+      monitoring: "true"
