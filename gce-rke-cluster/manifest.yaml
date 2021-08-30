@@ -53,7 +53,10 @@ copy:
     toDir: ""
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/secrets.txt
-    toDir: "deploy/platform-monitoring"    
+    toDir: "deploy/platform-monitoring"
+
+  - from: gs://its-config-params/gcp-rke-demo-cluster/secrets.txt
+    toDir: "deploy/minio-tenants"
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"

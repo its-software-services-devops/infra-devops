@@ -1,0 +1,46 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-console
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  tls:
+    - hosts:
+      - minio-syslog-console.gcp-rke-demo.its-software-services.com
+      secretName: minio-syslog-console-cert
+  rules:
+    - host: minio-syslog-console.gcp-rke-demo.its-software-services.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio-syslog-console
+                port:
+                  number: 9443
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-syslog
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  tls:
+    - hosts:
+      - minio-syslog.gcp-rke-demo.its-software-services.com
+      secretName: minio-console-cert
+  rules:
+    - host: minio-syslog.gcp-rke-demo.its-software-services.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio
+                port:
+                  number: 443

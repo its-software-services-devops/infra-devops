@@ -40,3 +40,8 @@ certificates:
     secretName: grafana-plaform-cert
     issuerRef: lets-encrypt-issuer
     namespace: platform-monitoring
+ 
+  - name: minio-syslog-console
+    secretName: minio-syslog-console-cert
+    issuerRef: lets-encrypt-issuer
+    namespace: minio-syslog
