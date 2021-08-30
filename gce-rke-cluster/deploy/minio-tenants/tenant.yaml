@@ -19,8 +19,8 @@ spec:
   imagePullPolicy: IfNotPresent
 
   env:
-    - name: LOGGER_CONSOLE_ENABLED
-      value: "true"
+    #- name: LOGGER_CONSOLE_ENABLED
+    #  value: "true"
 
     - name: MINIO_HTTP_TRACE
       value: "/dev/stdout"
