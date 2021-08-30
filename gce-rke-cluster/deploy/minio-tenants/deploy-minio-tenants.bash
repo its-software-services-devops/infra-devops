@@ -55,7 +55,7 @@ kubectl apply -f minio-syslog-ing.yaml -n ${NS1}
 # Install MinIO client
 echo ""
 echo "### Downloading MinIO client"
-sudo wget https://dl.min.io/client/mc/release/linux-amd64/mc -O mc
+sudo curl -LO https://dl.min.io/client/mc/release/linux-amd64/mc
 sudo chmod +x mc
 #sudo chown ${USER}:wheel mc
 
