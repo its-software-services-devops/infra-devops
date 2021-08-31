@@ -12,7 +12,7 @@ spec:
       v1.min.io/tenant: minio-syslogprom-service-monitor      
   namespaceSelector:
     matchNames:
-      - minio-selector
+      - minio-syslog
   endpoints:
   - interval: 30s
     path: /minio/v2/metrics/node
