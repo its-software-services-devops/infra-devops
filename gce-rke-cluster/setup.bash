@@ -15,4 +15,6 @@ cd setup
 ./setup-cert-manager.bash
 
 CWD=$(pwd)
+
 cd kafka-operator; ./setup-kafka-operator.bash; cd ${CWD}
+cd minio; ./setup-minio.bash; cd ${CWD}

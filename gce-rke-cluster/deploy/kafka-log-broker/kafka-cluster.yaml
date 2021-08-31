@@ -69,6 +69,12 @@ spec:
         size: 10Gi
         deleteClaim: false
   zookeeper:
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics
+          key: zookeeper-metrics-config.yml
     replicas: 3
     storage:
       type: persistent-claim

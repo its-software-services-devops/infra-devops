@@ -44,12 +44,19 @@ charts:
     chartUrl: https://prometheus-community.github.io/helm-charts
     version: 17.2.1
 
+  grafana:
+    chartUrl: https://grafana.github.io/helm-charts
+    version: 6.16.2
+
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/secrets.txt
-    toDir: "deploy/platform-monitoring"    
+    toDir: "deploy/platform-monitoring"
+
+  - from: gs://its-config-params/gcp-rke-demo-cluster/secrets.txt
+    toDir: "deploy/minio-tenants"
 
   - from: gs://its-config-params/gcp-rke-demo-cluster/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
@@ -157,3 +164,13 @@ infraIasc:
     toDir: deploy/platform-monitoring
     namespace: platform-monitoring
     values: []
+
+  - valuesFiles: [deploy/platform-monitoring/grafana-platform.yaml]
+    alias: rendered-grafana-platform
+    chartId: grafana
+    toDir: deploy/platform-monitoring
+    namespace: platform-monitoring
+    values:
+      - --set-string envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}

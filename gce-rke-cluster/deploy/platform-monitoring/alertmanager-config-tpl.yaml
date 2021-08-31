@@ -9,6 +9,11 @@ route:
       continue: false
       match_re:
         alertname: ^.+ContainersDown$|^.+ContainerDown$ #This alert requires metric that available on OpenShift. 
+    
+    - receiver: 'discard'
+      continue: false
+      match_re:
+        alertname: AvgRequestLatency #Finding the way to change treshold from 10 to another value. 
 
     - receiver: 'discard'
       continue: false

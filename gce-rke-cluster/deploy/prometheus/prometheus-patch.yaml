@@ -1,0 +1,4 @@
+spec:
+  serviceMonitorNamespaceSelector:
+    matchLabels:
+      monitoring: "true"

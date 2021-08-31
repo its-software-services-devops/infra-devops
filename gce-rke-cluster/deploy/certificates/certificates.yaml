@@ -36,3 +36,12 @@ certificates:
     issuerRef: lets-encrypt-issuer
     namespace: platform-monitoring
  
+  - name: grafana-plaform
+    secretName: grafana-plaform-cert
+    issuerRef: lets-encrypt-issuer
+    namespace: platform-monitoring
+ 
+  - name: minio-console
+    secretName: minio-console-cert
+    issuerRef: lets-encrypt-issuer
+    namespace: minio-operator
