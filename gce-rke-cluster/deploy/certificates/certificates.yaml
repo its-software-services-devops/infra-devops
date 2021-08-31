@@ -41,7 +41,7 @@ certificates:
     issuerRef: lets-encrypt-issuer
     namespace: platform-monitoring
  
-  - name: minio-syslog-console
-    secretName: minio-syslog-console-cert
+  - name: minio-console
+    secretName: minio-console-cert
     issuerRef: lets-encrypt-issuer
-    namespace: minio-syslog
+    namespace: minio-operator
