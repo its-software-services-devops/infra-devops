@@ -123,26 +123,6 @@ spec:
     consoleServiceAnnotations:
       v2.min.io: console-svc
 
-  ## Define configuration for Console (Graphical user interface for MinIO)
-  ## Refer https://github.com/minio/console
-  #console:
-  #  image: minio/console:v0.7.5
-  #  replicas: 2
-  #  consoleSecret:
-  #    name: console-secret
-  #  securityContext:
-  #    runAsUser: 1000
-  #    runAsGroup: 2000
-  #    runAsNonRoot: true
-  #    fsGroup: 2000
-
-  ## Prometheus setup for MinIO Tenant. 
-  #prometheus:
-  #  image: "prom/prometheus"
-  #  sidecarimage: "alpine"
-  #  initimage: "busybox"
-  #  diskCapacityGB: 5
-
   ## Prometheus Operator's Service Monitor for MinIO Tenant Pods.
   prometheusOperator:
     labels:

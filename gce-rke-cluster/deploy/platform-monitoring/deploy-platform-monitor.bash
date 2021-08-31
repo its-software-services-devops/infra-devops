@@ -9,7 +9,7 @@ kubectl create ns ${NS}
 kubectl apply -f rendered-prometheus-stack.yaml -n ${NS}
 
 #Use this for debug only
-kubectl apply -f prometheus-ing.yaml -n ${NS}
+#kubectl apply -f prometheus-ing.yaml -n ${NS}
 
 kubectl apply -f kafka-pod-monitor.yaml -n ${NS}
 kubectl apply -f certmanager-service-monitor.yaml -n ${NS}
