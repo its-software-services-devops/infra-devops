@@ -1,0 +1,7 @@
+tenants: []
+
+console:
+  image:
+    repository: minio/console
+    tag: v0.9.4
+    pullPolicy: IfNotPresent
