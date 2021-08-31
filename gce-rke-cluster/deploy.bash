@@ -24,3 +24,5 @@ cd deploy/platform-monitoring; ./deploy-platform-monitor.bash; cd ${CWD}
 
 # Put this to the very end
 cd deploy/certificates; ./deploy-certificates.bash; cd ${CWD}
+# Put this after deploy-certificates.bash
+cd deploy/minio-tenants; ./create-buckets.bash; cd ${CWD}
