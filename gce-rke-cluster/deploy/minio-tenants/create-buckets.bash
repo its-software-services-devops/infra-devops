@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ALIAS1=minio-syslog
+ALIAS1_URL=https://minio-syslog.gcp-rke-demo.its-software-services.com
+
 # Install MinIO client
 echo ""
 echo "### Downloading MinIO client"

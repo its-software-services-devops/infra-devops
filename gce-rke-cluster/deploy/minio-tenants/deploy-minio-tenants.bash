@@ -5,9 +5,6 @@ NS1=minio-syslog
 MINIO_SECRET=minio-secret.yaml
 CONSOLE_SECRET=console-secret.yaml
 
-ALIAS1=minio-syslog
-ALIAS1_URL=https://minio-syslog.gcp-rke-demo.its-software-services.com
-
 echo ""
 echo "### Deploying MinIO tenants to [${NS1}] ###"
 
