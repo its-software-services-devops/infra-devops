@@ -17,4 +17,4 @@ cd setup
 CWD=$(pwd)
 
 cd kafka-operator; ./setup-kafka-operator.bash; cd ${CWD}
-#cd minio; ./setup-minio.bash; cd ${CWD}
+cd minio; ./setup-minio.bash; cd ${CWD}

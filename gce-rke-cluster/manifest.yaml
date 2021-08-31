@@ -48,10 +48,6 @@ charts:
     chartUrl: https://grafana.github.io/helm-charts
     version: 6.16.2
 
-  minio-operator:
-    chartUrl: https://operator.min.io/
-    version: 4.1.8
-
 copy:
   - from: gs://its-config-params/gcp-rke-demo-cluster/id_rsa*
     toDir: ""
@@ -178,9 +174,3 @@ infraIasc:
       - --set-string envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
       - --set-string envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
       - --set-string envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
-
-  - valuesFiles: [deploy/minio-tenants/console.yaml]
-    alias: rendered-console
-    chartId: minio-operator
-    toDir: deploy/minio-tenants
-    namespace: minio-syslog
