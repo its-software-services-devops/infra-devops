@@ -1,0 +1,35 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio-syslog-svc-monitor
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack  
+spec:
+  jobLabel: minio
+  selector:
+    matchLabels:
+      v1.min.io/tenant: minio-syslogprom-service-monitor      
+  namespaceSelector:
+    matchNames:
+      - minio-selector
+  endpoints:
+  - interval: 30s
+    path: /minio/v2/metrics/node
+    port: https-minio
+    scheme: https
+    scrapeTimeout: 2s
+    tlsConfig:
+      ca: {}
+      cert: {}
+      insecureSkipVerify: true
+
+  - interval: 30s
+    path: /minio/v2/metrics/cluster
+    port: https-minio
+    scheme: https
+    scrapeTimeout: 2s
+    tlsConfig:
+      ca: {}
+      cert: {}
+      insecureSkipVerify: true
