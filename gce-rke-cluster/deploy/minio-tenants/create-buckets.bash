@@ -3,6 +3,9 @@
 ALIAS1=minio-syslog
 ALIAS1_URL=https://minio-syslog.gcp-rke-demo.its-software-services.com
 
+# Dot script to preserve ENV
+. ./export-secrets.bash secrets.txt
+
 # Install MinIO client
 echo ""
 echo "### Downloading MinIO client"
