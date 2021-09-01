@@ -28,6 +28,12 @@ spec:
     - name: MINIO_IDENTITY_OPENID_CLIENT_ID
       value: xxxxxxxxxxxxxxxx
 
+    - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+      value: thisissecret
+
+    - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+      value: ssssssurlssss
+
     - name: MINIO_IDENTITY_OPENID_SCOPES
       value: openid,profile,email,groups
 
