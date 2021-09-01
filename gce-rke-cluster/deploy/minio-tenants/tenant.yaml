@@ -35,7 +35,10 @@ spec:
       value: https://minio-syslog-console.gcp-rke-demo.its-software-services.com/oauth_callback
 
     - name: MINIO_IDENTITY_OPENID_SCOPES
-      value: openid,profile,email,groups
+      value: openid,profile,email
+
+    - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
+      value: policy
 
     - name: MINIO_HTTP_TRACE
       value: "/dev/stdout"
