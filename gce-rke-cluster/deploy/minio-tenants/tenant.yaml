@@ -32,7 +32,7 @@ spec:
       value: thisissecret
 
     - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-      value: ssssssurlssss
+      value: https://minio-syslog-console.gcp-rke-demo.its-software-services.com/oauth_callback
 
     - name: MINIO_IDENTITY_OPENID_SCOPES
       value: openid,profile,email,groups
