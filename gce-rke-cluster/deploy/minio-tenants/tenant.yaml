@@ -22,6 +22,15 @@ spec:
     - name: MINIO_PROMETHEUS_AUTH_TYPE
       value: "public"
 
+    - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+      value: https://dev-4641032.okta.com/oauth2/default/.well-known/openid-configuration
+
+    - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+      value: xxxxxxxxxxxxxxxx
+
+    - name: MINIO_IDENTITY_OPENID_SCOPES
+      value: openid,profile,email,groups
+
     - name: MINIO_HTTP_TRACE
       value: "/dev/stdout"
 
