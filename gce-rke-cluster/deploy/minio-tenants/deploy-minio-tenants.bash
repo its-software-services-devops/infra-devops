@@ -26,6 +26,8 @@ type: Opaque
 data:
   accesskey: $(echo -n ${ACCESS_KEY} | base64)
   secretkey: $(echo -n ${SECRET_KEY} | base64)
+  MINIO_IDENTITY_OPENID_CLIENT_ID: $(echo -n ${OKTA_CLIENT_ID} | base64)
+  MINIO_IDENTITY_OPENID_CLIENT_SECRET: $(echo -n ${OKTA_CLIENT_SECRET} | base64)
 EOF
 
 cat << EOF > ${CONSOLE_SECRET}

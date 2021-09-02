@@ -26,10 +26,16 @@ spec:
       value: https://dev-4641032.okta.com/oauth2/default/.well-known/openid-configuration
 
     - name: MINIO_IDENTITY_OPENID_CLIENT_ID
-      value: xxxxxxxxxxxxxxxx
+      valueFrom:
+        secretKeyRef:
+          name: minio-creds-secret
+          key: MINIO_IDENTITY_OPENID_CLIENT_ID
 
     - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
-      value: thisissecret
+      valueFrom:
+        secretKeyRef:
+          name: minio-creds-secret
+          key: MINIO_IDENTITY_OPENID_CLIENT_SECRET
 
     - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
       value: https://minio-syslog-console.gcp-rke-demo.its-software-services.com/oauth_callback
