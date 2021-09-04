@@ -4,8 +4,8 @@ kind: Ingress
 metadata:
   name: prometheus-k8s-ing
   namespace: monitoring
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+  annotations: {}
+    #nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   tls:
     - hosts:
