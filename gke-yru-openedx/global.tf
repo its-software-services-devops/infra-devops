@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
     bucket  = "its-terraform-states"
-    prefix = "its-gke-log-cluster"
+    prefix = "its-gke-yru-openedx"
   }
   
   required_providers {

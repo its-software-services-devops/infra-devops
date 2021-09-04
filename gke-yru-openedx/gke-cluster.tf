@@ -2,7 +2,7 @@ locals {
   project = "its-artifact-commons"
   region = "us-west1"
 
-  cluster_name = "etda-logs-cluster-1"
+  cluster_name = "yru-openedx-prod-1"
   network_name = "team-a-vpc-network"
   kubernetes_version = "1.20.9-gke.700"
   nodes_subnetwork_name = "team-a-vpc-network"
@@ -12,13 +12,13 @@ locals {
 }
 
 #### Service Account ####
-resource "google_service_account" "etda-logs-monitoring-sa" {
-  account_id   = "etda-logs-monitoring-sa"
+resource "google_service_account" "yru-opended-prod-sa" {
+  account_id   = "yru-opended-prod-sa"
   display_name = "Service Account for ETDA"
 }
 
 #### Cluster ####
-module "etda-logs-cluster" {
+module "yru-openedx-prod" {
   source = "./modules/gke-cluster"
 
   name                             = local.cluster_name
@@ -57,7 +57,7 @@ module "etda-logs-premium-pool" {
   min_node_count   = "1"
   max_node_count   = "2"
   node_count       = "1"
-  service_account_email = google_service_account.etda-logs-monitoring-sa.email
+  service_account_email = google_service_account.yru-opended-prod-sa.email
 
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
