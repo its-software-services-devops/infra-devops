@@ -5,10 +5,10 @@ metadata:
   name: prometheus-k8s-ing
   annotations: {}
 spec:
-  tls:
-    - hosts:
-      - prometheus-k8s.yru-openedx-prod.its-software-services.com
-      #secretName: prometheus-k8s-cert
+  #tls:
+  #  - hosts:
+  #    - prometheus-k8s.yru-openedx-prod.its-software-services.com
+  #    secretName: prometheus-k8s-cert
   rules:
     - host: prometheus-k8s.yru-openedx-prod.its-software-services.com
       http:
