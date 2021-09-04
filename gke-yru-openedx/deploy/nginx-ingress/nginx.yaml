@@ -1,1 +1,4 @@
 ---
+controller:
+  service:
+      enabled: false
