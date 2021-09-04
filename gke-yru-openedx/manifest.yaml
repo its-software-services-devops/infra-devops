@@ -12,6 +12,10 @@ charts:
     chartUrl: https://charts.jetstack.io
     version: 1.3.1
 
+  helm-prometheus-k8s:
+    chartUrl: https://its-software-services-devops.github.io/helm-prometheus-k8s/
+    version: 1.2.1
+
 copy:
   - from: gs://its-config-params/gke-yru-openedx/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
@@ -22,3 +26,20 @@ infraIasc:
     chartId: cert-manager
     namespace: cert-manager
     toDir: setup/cert-manager
+
+  - valuesFiles: [deploy/prometheus/prometheus-alert-config.yaml]
+    alias: rendered-prometheus-config
+    chartId: helm-prometheus-k8s
+    toDir: deploy/prometheus
+    values:
+      - --set-string alertmanager.generic.config.alertNoti.slackUrl=${SEC.ALERT_NOTI_SLACK_URL}
+
+  - valuesFiles: [deploy/prometheus/grafana-k8s.yaml]
+    alias: rendered-grafana-k8s
+    chartId: helm-grafana-k8s
+    toDir: deploy/prometheus
+    namespace: monitoring
+    values:
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
+      - --set-string grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
+      - --set-string grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}

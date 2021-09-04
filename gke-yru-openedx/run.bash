@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=v0.0.7
+VERSION=v0.0.8
 
 sudo docker run \
 -v $(pwd)/output:/wip/output \
@@ -8,6 +8,9 @@ sudo docker run \
 -e IASC_VCS_MODE=git \
 -e IASC_VCS_URL='https://github.com/its-software-services-devops/infra-devops.git' \
 -e IASC_VCS_REF=develop \
--e IASC_VCS_FOLDER=gke-logs-cluster \
+-e IASC_VCS_FOLDER=gke-yru-openedx \
+-e IASC_VAULT_SECRETS=gs://its-config-params/gke-yru-openedx/secrets.txt \
 -it gcr.io/its-artifact-commons/iasc:${VERSION} \
 init
+
+sudo chown -R admin:admin output
