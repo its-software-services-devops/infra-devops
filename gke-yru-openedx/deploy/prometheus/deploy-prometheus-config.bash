@@ -14,3 +14,6 @@ kubectl apply -f grafana-k8s-ing.yaml -n ${NS}
 
 kubectl label ns monitoring --overwrite monitoring=true
 kubectl patch prometheus k8s -n monitoring --type merge --patch "$(cat prometheus-patch.yaml)"
+
+kubectl annotate svc prometheus-k8s cloud.google.com/neg='{"ingress": true}' -n ${NS}
+kubectl annotate svc grafana-k8s cloud.google.com/neg='{"ingress": true}' -n ${NS}
