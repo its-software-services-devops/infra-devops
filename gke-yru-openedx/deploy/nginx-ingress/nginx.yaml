@@ -3,6 +3,5 @@ controller:
   service:
     enabled: true
     type: ClusterIP
-    internal:
-      annotations:
-        cloud.google.com/neg: '{"ingress": true}'
+    annotations:
+      cloud.google.com/neg: '{"ingress": true}'
