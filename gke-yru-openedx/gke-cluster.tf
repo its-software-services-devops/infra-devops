@@ -13,7 +13,7 @@ locals {
 
 #### Service Account ####
 resource "google_service_account" "yru-openedx-prod-sa" {
-  account_id   = "yru-opendex-prod"
+  account_id   = "yru-openedx-prod"
   display_name = "Service Account for ETDA"
 }
 
@@ -57,7 +57,7 @@ module "yru-openedx-prod-basic-pool" {
   min_node_count   = "1"
   max_node_count   = "2"
   node_count       = "1"
-  service_account_email = google_service_account.yru-opendex-prod.email
+  service_account_email = google_service_account.yru-openedx-prod.email
 
   # Match the Kubernetes version from the GKE cluster!
   kubernetes_version = local.kubernetes_version
