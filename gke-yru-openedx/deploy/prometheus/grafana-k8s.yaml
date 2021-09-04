@@ -8,7 +8,7 @@ grafana:
     OKTA_TENANT_ID: "will-change"
   grafana.ini:
     server:
-      root_url: https://grafana-k8s.gcp-rke-demo.its-software-services.com
+      root_url: https://grafana-k8s.yru-openedx-prod.its-software-services.com
     auth.okta:
       name: Okta
       enabled: true
