@@ -20,9 +20,16 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-grafana-k8s/
     version: 1.1.0
 
+  external-dns:
+    chartUrl: https://charts.bitnami.com/bitnami/
+    version:  5.2.1
+
 copy:
   - from: gs://its-config-params/gke-yru-openedx/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
+
+  - from: gs://its-config-params/gke-yru-openedx/cloud-dns-rke-demo.json
+    toDir: "deploy/external-dns"
 
 infraIasc:
   - valuesFiles: [setup/cert-manager/cert-manager.yaml]
@@ -47,3 +54,9 @@ infraIasc:
       - --set-string grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
       - --set-string grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
       - --set-string grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
+
+  - valuesFiles: [deploy/external-dns/external-dns.yaml]
+    alias: rendered-external-dns
+    chartId: external-dns
+    toDir: deploy/external-dns
+    namespace: external-dns

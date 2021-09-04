@@ -1,0 +1,13 @@
+fullnameOverride: gcp-cloud-dns
+provider: google
+sources: ['service', 'ingress']
+
+domainFilters:
+  - yru-openedx-prod.its-software-services.com
+
+google:
+  project: its-artifact-commons
+  serviceAccountSecret: gcp-cloud-dns-key
+  serviceAccountSecretKey: key.json
+
+txtOwnerId: yru-openedx-prod-ext-dns
