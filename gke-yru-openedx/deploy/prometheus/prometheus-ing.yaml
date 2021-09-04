@@ -5,6 +5,7 @@ metadata:
   name: prometheus-k8s-ing
   annotations:
     networking.gke.io/managed-certificates: gcp-managed-cert-monitoring
+    kubernetes.io/ingress.allow-http: "false"
 spec:
   #tls:
   #  - hosts:
