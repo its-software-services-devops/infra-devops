@@ -12,13 +12,13 @@ locals {
 }
 
 #### Service Account ####
-resource "google_service_account" "yru-opended-prod-sa" {
+resource "google_service_account" "yru-openedx-prod-sa" {
   account_id   = "yru-opended-prod-sa"
   display_name = "Service Account for ETDA"
 }
 
 #### Cluster ####
-module "yru-openedx-prod" {
+module "yru-openedx-prod-cluster" {
   source = "./modules/gke-cluster"
 
   name                             = local.cluster_name
@@ -47,12 +47,12 @@ module "yru-openedx-prod" {
 
 #### Pools ####
 
-module "etda-logs-premium-pool" {
+module "yru-openedx-prod-basic-pool" {
   source = "./modules/node-pool"
 
-  name             = "etda-logs-premium-pool"
+  name             = "yru-openedx-prod-basic-pool"
   region           = "us-west1"
-  gke_cluster_name = module.etda-logs-cluster.name
+  gke_cluster_name = module.yru-openedx-prod-cluster.name
   machine_type     = "n1-standard-2"
   min_node_count   = "1"
   max_node_count   = "2"
