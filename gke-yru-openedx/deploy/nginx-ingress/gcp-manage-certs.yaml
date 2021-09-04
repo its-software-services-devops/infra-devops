@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: gcp-managed-cert-nginx
+spec:
+  domains:
+    - '*.yru-openedx-prod.its-software-services.com'

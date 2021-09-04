@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ing
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: '*.yru-openedx-prod.its-software-services.com' 
+    networking.gke.io/managed-certificates: gcp-managed-cert-nginx
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  rules:
+    - host: '*.yru-openedx-prod.its-software-services.com'
+      http:
+        paths:
+          - path: /*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: nginx #XXXX
+                port:
+                  number: 443
