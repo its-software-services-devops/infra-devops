@@ -17,7 +17,7 @@ copy: []
 #    toDir: ""
 
 infraIasc:
-  - valuesFiles: [setup/cert-manager.yaml]
+  - valuesFiles: [setup/cert-manager/cert-manager.yaml]
     alias: rendered-cert-manager
     chartId: cert-manager
     namespace: cert-manager
