@@ -21,4 +21,4 @@ infraIasc:
     alias: rendered-cert-manager
     chartId: cert-manager
     namespace: cert-manager
-    toDir: setup
+    toDir: setup/cert-manager
