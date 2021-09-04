@@ -5,10 +5,10 @@ metadata:
   name: grafana-k8s-ing
   annotations: {}
 spec:
-  tls:
-    - hosts:
-      - grafana-k8s.yru-openedx-prod.its-software-services.com
-      secretName: grafana-k8s-cert
+  #tls:
+  #  - hosts:
+  #    - grafana-k8s.yru-openedx-prod.its-software-services.com
+  #    secretName: grafana-k8s-cert
   rules:
     - host: grafana-k8s.yru-openedx-prod.its-software-services.com
       http:
