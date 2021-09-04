@@ -28,6 +28,10 @@ charts:
     chartUrl: https://its-software-services-devops.github.io/helm-loki/
     version: 1.1.0-rc3
 
+  ingress-nginx:
+    chartUrl: https://kubernetes.github.io/ingress-nginx/
+    version: 4.0.1
+
 copy:
   - from: gs://its-config-params/gke-yru-openedx/cloud-dns-rke-demo.json
     toDir: "deploy/certificates"
@@ -75,3 +79,9 @@ infraIasc:
       - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_ID=${SEC.OKTA_CLIENT_ID}
       - --set-string loki-stack.grafana.envRenderSecret.OKTA_CLIENT_SECRET=${SEC.OKTA_CLIENT_SECRET}
       - --set-string loki-stack.grafana.envRenderSecret.OKTA_TENANT_ID=${SEC.OKTA_TENANT_ID}
+
+  - valuesFiles: [deploy/nginx-ingress/nginx.yaml]
+    alias: rendered-nginx
+    chartId: ingress-nginx
+    toDir: deploy/nginx-ingress
+    namespace: ingress-nginx

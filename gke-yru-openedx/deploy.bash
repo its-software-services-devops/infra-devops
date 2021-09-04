@@ -8,6 +8,7 @@ gcloud container clusters get-credentials ${CLUSTER} \
 
 CWD=$(pwd)
 
+cd deploy/nginx-ingress; ./deploy-nginx.bash; cd ${CWD}
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
 cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
 cd deploy/loki-log; ./deploy-loki-log.bash; cd ${CWD}
