@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: grafana-k8s-ing
   annotations:
+    external-dns.alpha.kubernetes.io/hostname: 'grafana-k8s.yru-openedx-prod.its-software-services.com' 
     networking.gke.io/managed-certificates: gcp-managed-cert-monitoring
     kubernetes.io/ingress.allow-http: "false"
 spec:
