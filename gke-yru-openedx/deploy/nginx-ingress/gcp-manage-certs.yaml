@@ -4,4 +4,5 @@ metadata:
   name: gcp-managed-cert-nginx
 spec:
   domains:
-    - '*.yru-openedx-prod.its-software-services.com'
+    - 'grafana-k8s.yru-openedx-prod.its-software-services.com'
+    - 'prometheus-k8s.yru-openedx-prod.its-software-services.com'
