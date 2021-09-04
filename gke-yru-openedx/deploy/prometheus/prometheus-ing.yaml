@@ -8,7 +8,7 @@ spec:
   tls:
     - hosts:
       - prometheus-k8s.yru-openedx-prod.its-software-services.com
-      secretName: prometheus-k8s-cert
+      #secretName: prometheus-k8s-cert
   rules:
     - host: prometheus-k8s.yru-openedx-prod.its-software-services.com
       http:
