@@ -10,3 +10,4 @@ CWD=$(pwd)
 
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
 cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
+cd deploy/loki-log; ./deploy-loki-log.bash; cd ${CWD}
