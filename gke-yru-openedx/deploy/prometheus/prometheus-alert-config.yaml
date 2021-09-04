@@ -6,7 +6,7 @@ alertmanager:
     config:
       alertNoti:
         slackUrl: ''
-        channel: '#etda-logs-monitor'
+        channel: '#yru-openedx-monitor'
         discardRules:
           - alertname: 'CPUThrottlingHigh'
             namespace: 'monitoring'            
