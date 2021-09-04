@@ -1,0 +1,17 @@
+alertmanager:
+  generic:
+    namespace: monitoring
+    enabled: true
+    createSecret: true
+    config:
+      alertNoti:
+        slackUrl: ''
+        channel: '#etda-logs-monitor'
+        discardRules:
+          - alertname: 'CPUThrottlingHigh'
+            namespace: 'monitoring'            
+          - alertname: 'KubeControllerManagerDown|KubeSchedulerDown'
+
+prometheus: {}
+
+alertRules: {}

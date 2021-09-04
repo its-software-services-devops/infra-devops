@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-k8s-ing
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  tls:
+    - hosts:
+      - grafana-k8s.yru-openedx-prod.its-software-services.com
+      secretName: grafana-k8s-cert
+  rules:
+    - host: grafana-k8s.yru-openedx-prod.its-software-services.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-k8s
+                port:
+                  number: 80
