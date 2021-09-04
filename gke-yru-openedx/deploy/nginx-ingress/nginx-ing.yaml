@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/ingress.allow-http: "false"
 spec:
   rules:
-    - host: '*.yru-openedx-prod.its-software-services.com'
+    - host: 'prometheus-k8s.yru-openedx-prod.its-software-services.com' #'*.yru-openedx-prod.its-software-services.com'
       http:
         paths:
           - path: /*
