@@ -3,21 +3,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: grafana-k8s-ing
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: 'grafana-k8s.yru-openedx-prod.its-software-services.com' 
-    networking.gke.io/managed-certificates: gcp-managed-cert-monitoring
-    kubernetes.io/ingress.allow-http: "false"
 spec:
-  #tls:
-  #  - hosts:
-  #    - grafana-k8s.yru-openedx-prod.its-software-services.com
-  #    secretName: grafana-k8s-cert
+  tls:
+    - hosts:
+      - grafana-k8s.yru-openedx-prod.its-software-services.com
+      #secretName: grafana-k8s-cert
   rules:
     - host: grafana-k8s.yru-openedx-prod.its-software-services.com
       http:
         paths:
-          - path: /*
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: grafana-k8s

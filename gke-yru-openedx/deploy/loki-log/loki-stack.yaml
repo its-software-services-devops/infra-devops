@@ -1,14 +1,14 @@
 ---
-#exposes:
-#  domain: yru-openedx-prod.its-software-services.com
-#  issuer: lets-encrypt-issuer
-#  ingresses: []
-#  - createCert: false
-#    name: cluster-logging
-#    service:
-#      name: loki-cluster-logging-grafana
-#      port:
-#        number: 80
+exposes:
+  domain: yru-openedx-prod.its-software-services.com
+  issuer: lets-encrypt-issuer
+  ingresses:
+  - createCert: false
+    name: grafana-loki
+    service:
+      name: loki-cluster-logging-grafana
+      port:
+        number: 80
 
 #Loki stack fro cluster container logs
 loki-stack:
