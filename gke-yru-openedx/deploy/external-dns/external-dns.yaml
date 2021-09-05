@@ -11,3 +11,8 @@ google:
   serviceAccountSecretKey: key.json
 
 txtOwnerId: yru-openedx-prod-ext-dns
+
+extraArgs:
+  - --regex-domain-exclusion=grafana-loki.yru-openedx-prod.its-software-services.com
+  - --regex-domain-exclusion=grafana-k8s.yru-openedx-prod.its-software-services.com
+  - --regex-domain-exclusion=prometheus-k8s.yru-openedx-prod.its-software-services.com

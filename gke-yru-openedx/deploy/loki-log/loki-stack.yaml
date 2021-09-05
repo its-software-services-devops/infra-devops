@@ -15,6 +15,10 @@ loki-stack:
   enabled: true
   fullnameOverride: loki-cluster-logging
 
+  loki:
+    persistence:
+      enabled: true
+
   grafana:
     envRenderSecret:
       OKTA_CLIENT_ID: "will-change"
