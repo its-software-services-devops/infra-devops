@@ -6,7 +6,7 @@ exposes:
   - createCert: false
     name: grafana-loki
     service:
-      name: loki-cluster-logging-grafana
+      name: loki-log-grafana
       port:
         number: 80
 

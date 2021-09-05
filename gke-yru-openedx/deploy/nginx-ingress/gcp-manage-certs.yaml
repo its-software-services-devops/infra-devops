@@ -6,3 +6,4 @@ spec:
   domains:
     - 'grafana-k8s.yru-openedx-prod.its-software-services.com'
     - 'prometheus-k8s.yru-openedx-prod.its-software-services.com'
+    - 'grafana-loki.yru-openedx-prod.its-software-services.com'
