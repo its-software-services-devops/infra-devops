@@ -13,5 +13,4 @@ google:
 txtOwnerId: yru-openedx-prod-ext-dns
 
 extraArgs:
-  - "aaaa=aaaaaaa"
-
+  - regex-domain-exclusion=grafana-k8s\..+$
