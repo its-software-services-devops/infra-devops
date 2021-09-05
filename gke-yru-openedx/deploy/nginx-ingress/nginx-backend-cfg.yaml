@@ -4,7 +4,7 @@ metadata:
   name: nginx-hc-config
 spec:
   healthCheck:
-    checkIntervalSec: 10
+    checkIntervalSec: 30
     port: 443
     type: HTTPS
     requestPath: /healthz
