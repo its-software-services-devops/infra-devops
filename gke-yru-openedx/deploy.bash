@@ -10,5 +10,6 @@ CWD=$(pwd)
 
 cd deploy/nginx-ingress; ./deploy-nginx.bash; cd ${CWD}
 cd deploy/prometheus; ./deploy-prometheus-config.bash; cd ${CWD}
-cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
+#external DNS does not work now
+#cd deploy/external-dns; ./deploy-external-dns.bash; cd ${CWD}
 cd deploy/loki-log; ./deploy-loki-log.bash; cd ${CWD}
