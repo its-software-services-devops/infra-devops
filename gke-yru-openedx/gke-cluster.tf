@@ -19,7 +19,7 @@ resource "google_service_account" "yru-openedx-prod-sa" {
 
 #### Cluster ####
 module "yru-openedx-prod-cluster" {
-  source = "./modules/gke-cluster"
+  source = "git::https://github.com/its-software-services-devops/tf-module-gke.git//modules?ref=1.0.2"
 
   name                             = local.cluster_name
   region                           = local.region
@@ -48,7 +48,7 @@ module "yru-openedx-prod-cluster" {
 #### Pools ####
 
 module "yru-openedx-prod-basic-pool" {
-  source = "./modules/node-pool"
+  source = "git::https://github.com/its-software-services-devops/tf-module-gke-nodepool.git//modules?ref=1.0.1"
 
   name             = "yru-openedx-prod-basic-pool"
   region           = "us-west1"
